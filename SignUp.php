@@ -111,5 +111,3 @@ header("Location:Varifymail.php");
 ?>
 
    </body>
-
-</html>
