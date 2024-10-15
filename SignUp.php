@@ -83,6 +83,8 @@ try {
     echo 'Caught exception: '. $e->getMessage() ."\n";
 }
 setcookie("VCode", $token, time() + 1500); 
+setcookie("Emailforv",$Email,time()+1500);
+setcookie("Fnameforv",$Fname,time()+1500);
 header("Location:Varifymail.php");
 //         require 'vendor/autoload.php';
 
