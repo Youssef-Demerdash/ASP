@@ -12,7 +12,28 @@
 <!DOCTYPE html>
 <html>
    <head>
-     <title></title>
+     <title>Sign Up</title>
+     <script>
+       function toggleRoleOptions() {
+         var role = document.getElementById('role').value;
+         var majorDiv = document.getElementById('majorDiv');
+         var facultyRoleDiv = document.getElementById('facultymemberrole');
+         
+         // Show Major dropdown if the role is "Student"
+         if (role === 'Student') {
+           majorDiv.style.display = 'block';
+         } else {
+           majorDiv.style.display = 'none';
+         }
+         
+         // Show Faculty Member Role dropdown if the role is "Faculty Member"
+         if (role === 'Faculty Member') {
+           facultyRoleDiv.style.display = 'block';
+         } else {
+           facultyRoleDiv.style.display = 'none';
+         }
+       }
+     </script>
    </head>
 
    <body>
@@ -30,8 +51,33 @@
   <label>Password:</label><br>
   <input type="Password" name="Password"><br>
 
-  <label>Faculty:</label><br>
-  <input type="text" name="Major"><br>
+  <label>Role:</label><br>
+   <select name="Role" id="role" onchange="toggleRoleOptions()">
+    <option value="">Select Your Role</option>
+     <option value="Student">Student</option>
+     <option value="Faculty Member">Faculty Member</option>
+     <option value="Admin">Admin</option>
+   </select><br>
+
+   <div id="majorDiv" style="display:none;">
+     <label>Major:</label><br>
+     <select name="Major">
+       <option value="Computer Science">Computer Science</option>
+       <option value="Law">Law</option>
+       <option value="Pharmacy">Pharmacy</option>
+       <option value="Dentistry">Dentistry</option>
+       <option value="Engineering">Engineering</option>
+     </select><br>
+   </div>
+
+   <div id="facultymemberrole" style="display:none;">
+    <label>Faculty Memeber Role:</label><br>
+    <select name="FRole">
+      <option value="Doctor">Doctor</option>
+      <option value="TA">TA</option>
+    </select><br>
+      </div>
+   <br><br>
 
   <input type="submit" value="Submit" name="Submit">
   <input type="reset">
