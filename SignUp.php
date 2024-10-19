@@ -91,6 +91,7 @@
 	$Lname=htmlspecialchars($_POST["LName"]);
 	$Email=htmlspecialchars($_POST["Email"]);
 	$Password=htmlspecialchars($_POST["Password"]);
+  $Role=htmlspecialchars($_POST["Role"]);
 	$Major=htmlspecialchars($_POST["Major"]);
     $Minor="";
     $Status="Regular Student";
