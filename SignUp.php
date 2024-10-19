@@ -1,5 +1,6 @@
 <?php
   include_once "includes/DB.inc.php";
+  include "classes.php";
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\Exception;
   

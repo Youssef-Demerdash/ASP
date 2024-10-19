@@ -17,7 +17,7 @@ abstract class user{
 
 class student extends user{
     function __construct($firstname,$lastname,$Email,$password,$role){
-    parent::__construct($firstname, $lastname, $Email, $password, $role);   
+        parent::__construct($firstname, $lastname, $Email, $password, $role);   
  }
     
 }
