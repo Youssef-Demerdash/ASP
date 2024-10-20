@@ -78,7 +78,7 @@
                   $_SESSION["Total_crdh"] = $row["Total crdh"];
 
                   // Redirect on success
-                  header("Location:Home.php?login=success");
+                  header("Location:Dashboard.php?login=success");
                   exit();
               } else {
                   echo "<div style='color:red; margin-top:10px;'>Invalid Email or Password</div>";
