@@ -33,6 +33,9 @@
            facultyRoleDiv.style.display = 'none';
          }
        }
+       function toggleFMRoleOptions(){
+        
+       }
      </script>
    </head>
 
@@ -72,7 +75,7 @@
 
    <div id="facultymemberrole" style="display:none;">
     <label>Faculty Memeber Role:</label><br>
-    <select name="FRole">
+    <select name="FRole" id="FMRole" onchange="toggleFMRoleOptions()">
       <option value="Doctor">Doctor</option>
       <option value="TA">TA</option>
     </select><br>
@@ -87,20 +90,75 @@
  //grap data from user if form was submitted 
 
   if($_SERVER["REQUEST_METHOD"]=="POST"){ //check if form was submitted
-	$Fname=htmlspecialchars($_POST["FName"]);
-	$Lname=htmlspecialchars($_POST["LName"]);
-	$Email=htmlspecialchars($_POST["Email"]);
-	$Password=htmlspecialchars($_POST["Password"]);
-  $Role=htmlspecialchars($_POST["Role"]);
-	$Major=htmlspecialchars($_POST["Major"]);
-    $Minor="";
-    $Status="Regular Student";
+    $ROLE=htmlspecialchars($_POST["Role"]);
+    if($ROLE==="Admin"){
+      $Fname=htmlspecialchars($_POST["FName"]);
+	    $Lname=htmlspecialchars($_POST["LName"]);
+	    $Email=htmlspecialchars($_POST["Email"]);
+	    $Password=htmlspecialchars($_POST["Password"]);
+      $ROLEID=0;
+      $Admin=new Admin($Fname,$Lname,$Email,$password,$ROLE,$ROLEID);
+      $sql="insert into admins(FName,LName,Email,Password,Role,RoleID) 
+	    values('$Fname','$Lname','$Email','$Password','$ROLE',$ROLEID)";
+	    $result=mysqli_query($conn,$sql);
+    }else if($ROLE==="Student"){
+      $Fname=htmlspecialchars($_POST["FName"]);
+	    $Lname=htmlspecialchars($_POST["LName"]);
+	    $Email=htmlspecialchars($_POST["Email"]);
+	    $Password=htmlspecialchars($_POST["Password"]);
+      $Role=htmlspecialchars($_POST["Role"]);
+	    $Major=htmlspecialchars($_POST["Major"]);
+      $Minor="";
+      $Status="Regular Student";
+      $ROLEID=1;
+      $Student=new Student($Fname,$Lname,$Email,$Password,$Role,$ROLEID,$Major,$Minor,$Status);
+	    $sql="insert into Students(FName,LName,Email,Password,Role,RoleID,Major,Minor,Status) 
+	    values('$Fname','$Lname','$Email','$Password','$Role','$ROLEID','$Major','$Minor','$Status')";
+	    $result=mysqli_query($conn,$sql);
+    }else if($ROLE==="Faculty Member"){
+      $FROLE=htmlspecialchars($_POST['FRole']);
+      if($FROLE==="Doctor"){
+        $Fname=htmlspecialchars($_POST["FName"]);
+        $Lname=htmlspecialchars($_POST["LName"]);
+        $Email=htmlspecialchars($_POST["Email"]);
+        $Password=htmlspecialchars($_POST["Password"]);
+        $Role=htmlspecialchars($_POST['FRole']);
+        $ROLEID=2;
+        $faculty="";
+        $num_Courses=[];
+        $Doctor=new Doctor($Fname,$Lname,$Email,$Password,$Role,$ROLEID,$faculty,$num_Courses);
+        $sql="insert into Doctors(FName,LName,Email,Password,Role,RoleID,num_Courses)
+        values('$Fname','$Lname','$Email',$Password','$Role','$ROLEID','$faculty','$num_Courses')";
+        $result=mysqli_query($conn,$sql);
+      }else if($FROLE==="TA"){
+        $Fname=htmlspecialchars($_POST["FName"]);
+        $Lname=htmlspecialchars($_POST["LName"]);
+        $Email=htmlspecialchars($_POST["Email"]);
+        $Password=htmlspecialchars($_POST["Password"]);
+        $Role=htmlspecialchars($_POST['FRole']);
+        $ROLEID=3;
+        $faculty="";
+        $assigned_Doctors=[];
+        $TA=new TA($Fname,$Lname,$Email,$Password,$Role,$ROLEID,$faculty,$assigned_Doctors);
+        $sql="insert into TA(FName,LName,Email,Password,Role,RoleID,assigned_Doctors)
+        values('$Fname','$Lname','$Email',$Password','$Role','$ROLEID','$faculty','$assigned_Doctors')";
+        $result=mysqli_query($conn,$sql);
+      }
+    }
+	// $Fname=htmlspecialchars($_POST["FName"]);
+	// $Lname=htmlspecialchars($_POST["LName"]);
+	// $Email=htmlspecialchars($_POST["Email"]);
+	// $Password=htmlspecialchars($_POST["Password"]);
+  // $Role=htmlspecialchars($_POST["Role"]);
+	// $Major=htmlspecialchars($_POST["Major"]);
+  //   $Minor="";
+  //   $Status="Regular Student";
 
     $token = bin2hex(random_bytes(3));
     //insert it to database 
-	$sql="insert into students(FName,LName,Email,Password,Major,Minor,Status) 
-	values('$Fname','$Lname','$Email','$Password','$Major','$Minor','$Status')";
-	$result=mysqli_query($conn,$sql);
+	// $sql="insert into students(FName,LName,Email,Password,Major,Minor,Status) 
+	// values('$Fname','$Lname','$Email','$Password','$Major','$Minor','$Status')";
+	// $result=mysqli_query($conn,$sql);
   //$ID="Select ID from students where Email ='$Email' and password='$Password'";
     //redirect the user back to index.php 
 	if($result)	{
