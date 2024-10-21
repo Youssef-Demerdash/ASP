@@ -27,11 +27,13 @@ require 'vendor/autoload.php';
       majorDiv.style.display = role === 'Student' ? 'block' : 'none';
       // Show Faculty Member Role dropdown if the role is "Faculty Member"
       facultyRoleDiv.style.display = role === 'Faculty Member' ? 'block' : 'none';
+    
       if (role === 'Student') {
            majorDiv.style.display = 'block';
          } else {
            majorDiv.style.display = 'none';
          }
+        }
        function toggleFMRoleOptions(){
         
        }
