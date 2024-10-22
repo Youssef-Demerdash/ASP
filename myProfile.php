@@ -51,8 +51,9 @@ echo "CUM GPA:"     .   $_SESSION["Cum gpa"]."<br>";
 echo "Semester CRDH:".   $_SESSION["Sem crdh"]."<br>";
 echo "Total CRDH:"   .   $_SESSION["Total crdh"]."<br>";
 
-echo"<a href='Home.php'>Back</a>";
+echo"<a href='Dashboard.php'>Back</a>";
 
 ?>
+
 </body>
 </html>

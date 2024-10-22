@@ -156,7 +156,7 @@ require 'vendor/autoload.php';
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Enter your password" required>
               </div>
-              <div class="text"><a href="#">Forgot password?</a></div>
+              <div class="text"><a href="forget-password.php">Forgot password?</a></div>
               <div class="button input-box">
                 <input type="submit" value="Submit">
               </div>
