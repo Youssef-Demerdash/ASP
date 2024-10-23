@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/welcome.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    
 </head>
 <body>
 <aside>
@@ -17,7 +18,7 @@
         </a>
 
         <a href="Schedule.php">
-        <img src="img/myschedule.png" alt="myschedule" class="myschedule">
+        <img src="img/clock.png" alt="myschedule" class="myschedule">
 
             <i class="fa fa-laptop"></i> Schedule
         </a>
@@ -35,5 +36,7 @@
             <i class="fa fa-trash-o"></i> Log Out
         </a>
     </aside>
+
+
 </body>
 </html>
