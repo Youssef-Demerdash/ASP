@@ -66,8 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email->addTo($Email, $Fname);
         $email->addContent("text/plain", "Your code: " . $token);
       echo $Email;
-        
-
         try {
             $response = $sendgrid->send($email);
             if ($response->statusCode() != 202) {
