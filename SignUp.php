@@ -57,38 +57,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Execute the statement and handle the result
-    if ($stmt->execute()) {
-      //$sendgrid = new \SendGrid('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');
-        // Send verification email using SendGrid
-        $email = new \SendGrid\Mail\Mail();
-        $email->setFrom("youssefashrafdem@gmail.com", "ASP");
-        $email->setSubject("VERIFY YOUR MAIL");
-        $email->addTo($Email, $Fname);
-        $email->addContent("text/plain", "Your code: " . $token);
-      echo $Email;
+//     if ($stmt->execute()) {
+//       //$sendgrid = new \SendGrid('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');
+//         // Send verification email using SendGrid
+//         $email = new \SendGrid\Mail\Mail();
+//         $email->setFrom("youssefashrafdem@gmail.com", "ASP");
+//         $email->setSubject("VERIFY YOUR MAIL");
+//         $email->addTo($Email, $Fname);
+//         $email->addContent("text/plain", "Your code: " . $token);
+//       echo $Email;
         
 
-        try {
-            $response = $sendgrid->send($email);
-            if ($response->statusCode() != 202) {
-                throw new Exception('Failed to send email, status code: ' . $response->statusCode());
-            }
-        } catch (Exception $e) {
-            error_log('Caught exception: '. $e->getMessage());
-            echo 'Error sending email. Please try again later.';
-        }
+//         try {
+//             $response = $sendgrid->send($email);
+//             if ($response->statusCode() != 202) {
+//                 throw new Exception('Failed to send email, status code: ' . $response->statusCode());
+//             }
+//         } catch (Exception $e) {
+//             error_log('Caught exception: '. $e->getMessage());
+//             echo 'Error sending email. Please try again later.';
+//         }
 
-        setcookie("VCode", $token, time() + 1500); 
-        setcookie("Emailforv", $Email, time() + 1500);
-        setcookie("Fnameforv", $Fname, time() + 1500);
-        //header("Location:Varifymail.php");
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+//         setcookie("VCode", $token, time() + 1500); 
+//         setcookie("Emailforv", $Email, time() + 1500);
+//         setcookie("Fnameforv", $Fname, time() + 1500);
+//         //header("Location:Varifymail.php");
+//     } else {
+//         echo "Error: " . $stmt->error;
+//     }
 
-    $stmt->close();
-    $conn->close();
-}
+//     $stmt->close();
+//     $conn->close();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
