@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the statement and handle the result
     if ($stmt->execute()) {
-      $sendgrid = new \SendGrid('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');
+      //$sendgrid = new \SendGrid('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');
         // Send verification email using SendGrid
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("youssefashrafdem@gmail.com", "ASP");
@@ -572,5 +572,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //redirect the user back to index.php 
 // ?>
 
-<!-- //    </body>
+ //    </body>
 // </html> --> 
