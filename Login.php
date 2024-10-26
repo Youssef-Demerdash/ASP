@@ -45,7 +45,7 @@ require 'vendor/autoload.php';
           }
           ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -355,4 +355,4 @@ require 'vendor/autoload.php';
     </div>
   </div>
 </body>
-</html>
+</html> -->
