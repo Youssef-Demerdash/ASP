@@ -9,8 +9,8 @@ require 'vendor/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ROLE = htmlspecialchars($_POST["Role"]);
+    require 'vendor/autoload.php'; 
     $token = bin2hex(random_bytes(3));
-    
 
     // Set role ID based on the selected role
     $ROLEID = ($ROLE === 'Admin') ? 0 : (($ROLE === 'Student') ? 1 : 2);
@@ -58,15 +58,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the statement and handle the result
     if ($stmt->execute()) {
-      require 'vendor/autoload.php'; 
+      $sendgrid = new \SendGrid('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');
         // Send verification email using SendGrid
-        $email= new \SendGrid\Mail\Mail();
+        $email = new \SendGrid\Mail\Mail();
         $email->setFrom("youssefashrafdem@gmail.com", "ASP");
         $email->setSubject("VERIFY YOUR MAIL");
         $email->addTo($Email, $Fname);
         $email->addContent("text/plain", "Your code: " . $token);
       echo $Email;
-      $sendgrid = new \SendGrid(getenv('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'));
+        
 
         try {
             $response = $sendgrid->send($email);
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <title>Signup Form </title>
- <link rel="stylesheet" href="css/login-signup.css">
+ <!-- <link rel="stylesheet" href="css/login-signup.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
