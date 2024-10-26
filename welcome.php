@@ -27,7 +27,7 @@
 
             <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
                 <a href="Login.php" class="styled-btn" aria-label="Log in to your account">Log In</a>
-                <a href="SignUp.php" class="styled-btn" aria-label="Log in to your account">Sign Up</a>
+                <a href="Login.php" class="styled-btn" aria-label="Log in to your account">Sign Up</a>
             
             </div>
 

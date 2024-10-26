@@ -46,24 +46,22 @@ class Student extends user{
 
 class Doctor extends user{
     public $faculty;
-    public $num_courses;
+    public $course_code;
 
-    function __construct($firstname,$lastname,$Email,$password,$role,$roleID,$faculty,array $num_courses){
+    function __construct($firstname,$lastname,$Email,$password,$role,$roleID,$faculty,$course_code){
         parent::__construct($firstname, $lastname, $Email, $password, $role,$roleID); 
           $this->faculty=$faculty;
-          $this->num_course=$num_courses;
+          $this->course_code=$course_code;
      }
 }
 
 class TA extends user{
     public $faculty;
-    public $assigned_doctors;
-    public $num_courses;
-    function __construct($firstname,$lastname,$Email,$password,$role,$roleID,$faculty,array $assigned_doctors,array $num_courses){
+    public $course_code;
+    function __construct($firstname,$lastname,$Email,$password,$role,$roleID,$faculty,array $assigned_doctors,$course_code){
         parent::__construct($firstname, $lastname, $Email, $password, $role,$roleID);   
         $this->faculty=$faculty;
-        $this->assigned_doctor=$assignem_doctor;
-        $this->num_courses=$num_courses;
+        $this->course_code=$course_code;
      }
 }
 
