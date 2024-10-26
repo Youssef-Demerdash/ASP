@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
@@ -37,5 +38,42 @@
             <i class="fa fa-trash-o"></i> Log Out
         </a>
     </aside>
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <h1>Doctor's Dashboard</h1>
+            <p>Welcome, Dr. [Name]</p>
+        </header>
+        
+        <div class="dashboard-content">
+            <!-- Timeline Section -->
+            <section class="timeline">
+                <h2>Timeline</h2>
+                <ul class="timeline-list">
+                    <li>
+                        <h3>Upcoming Lecture</h3>
+                        <p>Date: October 30, 2024</p>
+                        <p>Topic: Introduction to Medical Sciences</p>
+                    </li>
+                    <li>
+                        <h3>Research Meeting</h3>
+                        <p>Date: November 5, 2024</p>
+                        <p>Topic: Clinical Trials in Cardiology</p>
+                    </li>
+                    <!-- Add more timeline items here -->
+                </ul>
+            </section>
+
+            <!-- Calendar Section -->
+            <section class="calendar">
+                <h2>Calendar</h2>
+                <div class="calendar-container">
+                    <iframe src="https://calendar.google.com/calendar/embed?src=[YOUR_CALENDAR_LINK]&ctz=America%2FNew_York"
+                        style="border: 0" width="100%" height="500" frameborder="0" scrolling="no">
+                    </iframe>
+                </div>
+            </section>
+        </div>
+    </div>
 </body>
 </html>
+
