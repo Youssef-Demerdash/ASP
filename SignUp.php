@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssisss", $Fname, $Lname, $Email, $Password, $FROLE, $ROLEID, $faculty, $course_code);
     }
-
+  }
     // Execute the statement and handle the result
 //     if ($stmt->execute()) {
 //       //$sendgrid = new \SendGrid('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');
