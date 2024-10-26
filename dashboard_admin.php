@@ -35,7 +35,7 @@
             
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Class</span>
+                <span class="menu-title">courses</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic">
@@ -46,7 +46,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+              <a class="nav-link" data-toggle="collapse" href="students.php" aria-expanded="false" aria-controls="ui-basic1">
                 <span class="menu-title">Students</span>
                 <i class="icon-people menu-icon"></i>
               </a>
@@ -58,14 +58,38 @@
               </div>
             </li>
             <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                <span class="menu-title">Doctors</span>
+                <i class="icon-people menu-icon"></i>
+              </a>
+              <div class="collapse" id="ui-basic1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="add-students.php">Add doctors</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="manage-students.php">Manage doctors</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                <span class="menu-title">TAS</span>
+                <i class="icon-people menu-icon"></i>
+              </a>
+              <div class="collapse" id="ui-basic1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="add-students.php">Add TAS</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="manage-students.php">Manage TAS</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">Notice</span>
+                <span class="menu-title">schedules</span>
                 <i class="icon-doc menu-icon"></i>
               </a>
               <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="add-notice.php"> Add Notice </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="manage-notice.php"> Manage Notice </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="add-notice.php"> Add schedules </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="manage-notice.php"> Manage schedules </a></li>
                 </ul>
               </div>
             </li>
