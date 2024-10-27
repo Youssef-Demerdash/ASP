@@ -1,6 +1,3 @@
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,6 +35,20 @@
         h1 {
             margin-bottom: 20px;
         }
+        .operation-icons i {
+            cursor: pointer;
+            margin-right: 8px;
+        }
+        .operation-icons i:hover {
+            color: #007bff;
+        }
+        .add-student-icon {
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+        .add-student-icon:hover {
+            color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -52,7 +63,6 @@
                     <i class="fas fa-search"></i>
                 </button>
                 <input type="text" class="form-control" placeholder="Search">
-                <button class="btn btn-dark">Add Student</button>
             </div>
         </div>
     </div>
@@ -65,6 +75,7 @@
           <th scope="col">Last Name</th>
           <th scope="col">Email</th>
           <th scope="col">Status</th>
+          <th scope="col">Operations</th>
         </tr>
       </thead>
       <tbody>
@@ -74,6 +85,12 @@
           <td>Otto</td>
           <td>mark.otto@example.com</td>
           <td>Active</td>
+          <td class="operation-icons">
+            <i class="fas fa-eye text-success"></i>
+            <i class="fas fa-edit text-primary"></i>
+            <i class="fas fa-trash text-danger"></i>
+            <i class="fas fa-user-plus add-student-icon" title="Add Student"></i>
+          </td>
         </tr>
         <tr>
           <th scope="row">2</th>
@@ -81,6 +98,12 @@
           <td>Thornton</td>
           <td>jacob.thornton@example.com</td>
           <td>Inactive</td>
+          <td class="operation-icons">
+            <i class="fas fa-eye text-success"></i>
+            <i class="fas fa-edit text-primary"></i>
+            <i class="fas fa-trash text-danger"></i>
+            <i class="fas fa-user-plus add-student-icon" title="Add Student"></i>
+          </td>
         </tr>
         <tr>
           <th scope="row">3</th>
@@ -88,6 +111,12 @@
           <td>Bird</td>
           <td>larry.bird@example.com</td>
           <td>Active</td>
+          <td class="operation-icons">
+            <i class="fas fa-eye text-success"></i>
+            <i class="fas fa-edit text-primary"></i>
+            <i class="fas fa-trash text-danger"></i>
+            <i class="fas fa-user-plus add-student-icon" title="Add Student"></i>
+          </td>
         </tr>
       </tbody>
     </table>
