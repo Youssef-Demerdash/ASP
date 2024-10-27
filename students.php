@@ -59,15 +59,15 @@
     <div class="row justify-content-center mb-3">
         <div class="col-md-8">
             <div class="input-group">
-                <button class="search-btn input-group-text bg-dark text-light">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search by ID">
+                <button class="search-btn input-group-text bg-dark text-light" onclick="searchById()">
                     <i class="fas fa-search"></i>
                 </button>
-                <input type="text" class="form-control" placeholder="Search">
             </div>
         </div>
     </div>
 
-    <table class="table table-bordered table-striped table-hover">
+    <table class="table table-bordered table-striped table-hover" id="studentTable">
       <thead class="table-dark">
         <tr>
           <th scope="col">ID</th>
@@ -243,6 +243,7 @@
 
 <script>
     let rowToEdit;
+    let rowToDelete;
 
     function showStudentInfo(element) {
         const row = element.closest('tr');
@@ -310,6 +311,23 @@
             modal.hide(); // Hide the modal
         }
     };
+
+    function searchById() {
+        const input = document.getElementById('searchInput').value;
+        const table = document.getElementById('studentTable');
+        const rows = table.getElementsByTagName('tr');
+        
+        // Loop through all table rows, except the header
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('th');
+            const id = cells[0].innerText; // Get the ID from the first cell
+            if (id.includes(input)) {
+                rows[i].style.display = ''; // Show the row
+            } else {
+                rows[i].style.display = 'none'; // Hide the row
+            }
+        }
+    }
 </script>
 
 </body>
