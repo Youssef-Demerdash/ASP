@@ -89,7 +89,7 @@
             <i class="fas fa-eye text-success"></i>
             <i class="fas fa-edit text-primary"></i>
             <i class="fas fa-trash text-danger"></i>
-            <i class="fas fa-user-plus add-student-icon" title="Add Student"></i>
+            <i class="fas fa-user-plus add-student-icon" title="Add Student" data-bs-toggle="modal" data-bs-target="#addStudentModal"></i>
           </td>
         </tr>
         <tr>
@@ -102,7 +102,7 @@
             <i class="fas fa-eye text-success"></i>
             <i class="fas fa-edit text-primary"></i>
             <i class="fas fa-trash text-danger"></i>
-            <i class="fas fa-user-plus add-student-icon" title="Add Student"></i>
+            <i class="fas fa-user-plus add-student-icon" title="Add Student" data-bs-toggle="modal" data-bs-target="#addStudentModal"></i>
           </td>
         </tr>
         <tr>
@@ -115,11 +115,50 @@
             <i class="fas fa-eye text-success"></i>
             <i class="fas fa-edit text-primary"></i>
             <i class="fas fa-trash text-danger"></i>
-            <i class="fas fa-user-plus add-student-icon" title="Add Student"></i>
+            <i class="fas fa-user-plus add-student-icon" title="Add Student" data-bs-toggle="modal" data-bs-target="#addStudentModal"></i>
           </td>
         </tr>
       </tbody>
     </table>
+</div>
+
+<!-- Modal for Add Student -->
+<div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addStudentModalLabel">Add Student</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addStudentForm">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" required>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" form="addStudentForm">Add Student</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
