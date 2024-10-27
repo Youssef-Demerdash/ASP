@@ -88,7 +88,7 @@
           <td class="operation-icons">
             <i class="fas fa-eye text-success"></i>
             <i class="fas fa-edit text-primary"></i>
-            <i class="fas fa-trash text-danger"></i>
+            <i class="fas fa-trash text-danger" onclick="openConfirmDeleteModal(this)"></i>
             <i class="fas fa-user-plus add-student-icon" title="Add Student" data-bs-toggle="modal" data-bs-target="#addStudentModal"></i>
           </td>
         </tr>
@@ -101,7 +101,7 @@
           <td class="operation-icons">
             <i class="fas fa-eye text-success"></i>
             <i class="fas fa-edit text-primary"></i>
-            <i class="fas fa-trash text-danger"></i>
+            <i class="fas fa-trash text-danger" onclick="openConfirmDeleteModal(this)"></i>
             <i class="fas fa-user-plus add-student-icon" title="Add Student" data-bs-toggle="modal" data-bs-target="#addStudentModal"></i>
           </td>
         </tr>
@@ -114,7 +114,7 @@
           <td class="operation-icons">
             <i class="fas fa-eye text-success"></i>
             <i class="fas fa-edit text-primary"></i>
-            <i class="fas fa-trash text-danger"></i>
+            <i class="fas fa-trash text-danger" onclick="openConfirmDeleteModal(this)"></i>
             <i class="fas fa-user-plus add-student-icon" title="Add Student" data-bs-toggle="modal" data-bs-target="#addStudentModal"></i>
           </td>
         </tr>
@@ -161,9 +161,51 @@
   </div>
 </div>
 
+<!-- Confirmation Modal for Deletion -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this record?</p>
+        <p id="deleteStudentInfo"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+    let rowToDelete;
+
+    function openConfirmDeleteModal(element) {
+        rowToDelete = element.closest('tr'); // Store the row to delete
+        const firstName = rowToDelete.cells[1].innerText; // Get first name
+        const lastName = rowToDelete.cells[2].innerText; // Get last name
+        document.getElementById('deleteStudentInfo').innerText = `${firstName} ${lastName}`;
+        const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+        modal.show();
+    }
+
+    document.getElementById('confirmDeleteButton').onclick = function() {
+        if (rowToDelete) {
+            rowToDelete.remove(); // Remove the row from the table
+            rowToDelete = null; // Clear the reference
+            const modal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
+            modal.hide(); // Hide the modal
+        }
+    };
+</script>
 
 </body>
 </html>
