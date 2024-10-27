@@ -58,7 +58,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+              <a class="nav-link" data-toggle="collapse" href="doctors.php" aria-expanded="false" aria-controls="ui-basic1">
                 <span class="menu-title">Doctors</span>
                 <i class="icon-people menu-icon"></i>
               </a>
