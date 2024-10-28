@@ -89,6 +89,12 @@
                 <i class="icon-notebook menu-icon"></i>
               </a>
                </li>
+               
+               <a class="nav-link" data-toggle="collapse" href="SignOut.php" aria-expanded="false" aria-controls="ui-basic1">
+                <span class="menu-title">Log Out</span>
+                <i class="icon-people menu-icon"></i>
+              </a>
+               </li>
 
             </li>
           </ul>
