@@ -103,3 +103,48 @@ body {
         height: auto; /* Height auto for content */
     }
 }
+
+
+
+body {
+    background-color: #f8f9fa;
+}
+.search-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.search-btn:hover {
+    color: #fff;
+    background-color: #343a40;
+    border-radius: 0.25rem;
+}
+.table th, .table td {
+    vertical-align: middle;
+}
+.table-hover tbody tr:hover {
+    background-color: #e9ecef; /* Light gray on hover */
+}
+.input-group {
+    margin-bottom: 20px;
+}
+.form-control {
+    border-radius: 0.25rem;
+}
+h1 {
+    margin-bottom: 20px;
+}
+.operation-icons i {
+    cursor: pointer;
+    margin-right: 8px;
+}
+.operation-icons i:hover {
+    color: #007bff;
+}
+.add-student-icon {
+    color: #28a745;
+    font-size: 1.2rem;
+}
+.add-student-icon:hover {
+    color: #218838;
+}

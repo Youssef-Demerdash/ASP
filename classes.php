@@ -1,4 +1,21 @@
 <?php
+
+class DB {
+	private $host = "localhost";
+	private $user = "root";
+	private $password = "";
+	private $database = "ASP";
+	public $conn;
+
+	function __construct() {
+		$this->conn = $this->connectDB();
+	}
+
+	function connectDB() {
+		$conn = mysqli_connect($this->host,$this->user,$this->password,$this->database);
+		return $conn;
+	}
+}
 abstract class User{
     public $firstname;
     public $lastname;
@@ -24,24 +41,30 @@ class Admin extends user{
 }
 
 class Student extends user{
-    public $major;
-    public $minor;
-    public $status;
-    public $semgpa;
-    public $cumgpa;
-    public $semcrdh;
-    public $totalcrdh;
-    public $taken_Courses;
-    function __construct($firstname,$lastname,$Email,$password,$role,$roleID,$major,$minor,$status,$semgpa,$cumgpa,$semcrdh,$totalcrdh,array $taken_Courses){
-        parent::__construct($firstname, $lastname, $Email, $password, $role,$roleID);   
-        $this->major=$major;
-        $this->minor=$minor;
-        $this->status=$status;
-        $this->semgpa=$semgpa;
-        $this->cumgpa=$cumgpa;
-        $this->semcrdh=$semcrdh;
-        $this->totalcrdh=$totalcrdh;
- }
+    private $conn;
+    public function __construct($DBconn){
+        $this->conn = $DBconn;
+    }
+
+   public function getAllstudents(){
+    $sql="SELECT * FROM students";
+    $result=$this->conn->query($sql);
+    return $result;
+   }
+
+   public function getStudentByID($ID) {
+    $sql = "SELECT * FROM students WHERE ID = ?";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bind_param("i", $ID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();  // Fetch data as an associative array
+    } else {
+        return null;  // Return null if no record is found
+    }
+}
 }
 
 class Doctor extends user{
