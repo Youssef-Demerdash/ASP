@@ -14,16 +14,9 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
-<<<<<<< HEAD
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Include Sidebar -->
-            <?php include 'sidebar.php'; ?>
-=======
 <aside>
         <img src="img/logo.png" alt="Logo" width="90%">
       <br>
->>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
 
             <!-- Main Content -->
             <main class="col-md-10 ml-sm-auto col-lg-10 px-4">

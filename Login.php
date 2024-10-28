@@ -1,60 +1,66 @@
 <?php
+var_dump($_POST);
 session_start();
 include_once "includes/DB.inc.php";
-// require 'vendor/autoload.php';
-
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\Exception;
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
-//     $Email = $_POST["Email"];
-//     $Password = $_POST["Password"];
-
-//     // Secure login with prepared statements
-//     if ($_POST['action'] === 'login') {
-//         $stmt = $conn->prepare("SELECT * FROM students WHERE Email = ? AND Password = ?");
-//         $stmt->bind_param("ss", $Email, $Password);
-//         $stmt->execute();
-//         $result = $stmt->get_result();
-
-//         if ($row = $result->fetch_assoc()) {
-//             $_SESSION = array_merge($_SESSION, $row);  // Store user details in session
-//             header("Location: Dashboard.php?login=success");
-//             exit();
-//         } else {
-//             $loginError = "Invalid Email or Password";
-//         }
-//         $stmt->close();
-//     }
-//     // Registration Logic Here (Signup)
-// }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
-  $Email = $_POST["Email"];
-  $Password = $_POST["Password"];
-
-  // Secure login with prepared statements
-  if ($_POST['action'] === 'login') {
-      $stmt = $conn->prepare("SELECT * FROM students WHERE Email = ?");
-      $stmt->bind_param("s", $Email);
-      $stmt->execute();
-      $result = $stmt->get_result();
-
-      if ($row = $result->fetch_assoc()) {
-          // Verify the hashed password
-          if (password_verify($Password, $row['Password'])) {
-              $_SESSION = array_merge($_SESSION, $row);  // Store user details in session
-              header("Location: Dashboard.php?login=success");
-              exit();
-          } else {
-              $loginError = "Invalid Email or Password";
-          }
-      } else {
-          $loginError = "Invalid Email or Password";
-      }
-      $stmt->close();
-  }
+include "classes.php";
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
+} else {
+    echo "Database connected successfully.";
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["Email"]) && isset($_POST["Password"])) {
+        $Email = $_POST["Email"];
+        $Password = $_POST["Password"];
+
+        if ($stmt = $conn->prepare("
+            SELECT 'student' AS role, Email, Password, ROLEID FROM students WHERE Email = ? 
+            UNION ALL
+            SELECT 'doctor' AS role, Email, Password, ROLEID FROM doctors WHERE Email = ? 
+            UNION ALL
+            SELECT 'admin' AS role, Email, Password, ROLEID FROM admins WHERE Email = ? 
+            UNION ALL
+            SELECT 'ta' AS role, Email, Password, ROLEID FROM ta WHERE Email = ? 
+        ")) {
+            $stmt->bind_param("ssss", $Email, $Email, $Email, $Email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($row = $result->fetch_assoc()) {
+                // Verify the password
+                if ($Password === $row['Password']) {
+                    $_SESSION['ROLEID'] = $row['ROLEID'];
+                    // Redirect based on role
+                    switch ($_SESSION['ROLEID']) {
+                        case 0:
+                            header("Location: dashboard_admin.php?login=success");
+                            break;
+                        case 1:
+                            header("Location: Dashboard.php?login=success");
+                            break;
+                        case 2:
+                            header("Location: dashboard_dr.php?login=success");
+                            break;
+                        default:
+                            header("Location: dashboard_ta.php?login=success");
+                    }
+                    exit();
+                } else {
+                    $loginError = "Invalid Email or Password";
+                }
+            } else {
+                $loginError = "Invalid Email or Password";
+            }
+            $stmt->close();
+        } else {
+            die("Failed to prepare statement.");
+        }
+    } else {
+        $loginError = "Email or Password not provided!";
+    }
+}
+
 
 ?>
 
@@ -79,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 <div class="login-form-container">
     <div class="login-form">
         <h2>Login</h2>
-        <form action="login.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <input type="email" name="Email" placeholder="Enter your email" required>
             <input type="password" name="Password" placeholder="Enter your password" required>
             <input type="submit" value="Login">
