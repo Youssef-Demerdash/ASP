@@ -4,12 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<<<<<<< HEAD
+
+    <title>Welcome</title>
+    
+    <link rel="stylesheet" href="css/welcome.css" /> 
+0    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+=======
     <meta name="description" content="Welcome to OnCampus. Log in to access your account." />
     <meta name="keywords" content="welcome, login, platform, student services" />
     <title>Welcome to OnCampus</title>
     
     <link rel="stylesheet" href="css/welcome.css" />
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+>>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
 </head>
 
@@ -21,6 +29,22 @@
         <h1 class="text-3xl md:text-4xl text-white font-bold">Welcome to OnCampus</h1>
         <p class="text-md md:text-lg text-white mt-1">Your one-stop platform for academic success.</p>
     </div>
+<<<<<<< HEAD
+    
+    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+ 
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+                <a href="Login.php" class="styled-btn" aria-label="Log in to your account">Log In</a>
+                <a href="Login.php" class="styled-btn" aria-label="Sign up for an account">Sign Up</a>
+
+            
+            </div>
+            <div class="w-full md:w-3/5 py-6 flex justify-center md:justify-end">
+                    <img class="w-full md:w-4/5 z-50" src="img/hero.png" alt="Hero Image" />
+                </div>
+
+
+=======
 
     <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center justify-center mb-6">
         <!-- Left Col -->
@@ -33,7 +57,9 @@
         <div class="w-full md:w-3/5 py-4 text-center">
             <img class="w-full md:w-4/5 z-50" src="img/hero.png" alt="Hero Image" />
         </div>
+>>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
     </div>
+
     
     <div class="wave-section mt-6">
         <svg viewBox="0 0 1428 174" xmlns="http://www.w3.org/2000/svg">
