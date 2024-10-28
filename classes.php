@@ -59,11 +59,14 @@ class Student extends user{
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
+    if ($result) {
         return $result->fetch_assoc();  // Fetch data as an associative array
     } else {
         return null;  // Return null if no record is found
     }
+    $query->close();
+    $mysqli->close();
+    exit;
 }
 }
 

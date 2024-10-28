@@ -5,13 +5,14 @@ include "classes.php";
 $studentsObject = new Student($conn);
 $students = $studentsObject->getAllstudents();
 
-if (isset($_POST['id'])) {
-    $studentId = $_POST['id'];
+if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['ID'])) {
+    $studentId = $_POST['ID'];
     $studentData = $studentsObject->getStudentByID($studentId);
 
-    if ($studentData) {
-        echo "<script>var studentInfo = " . json_encode($studentData) . ";</script>";
-    }
+    if ($studentData!=null) {
+      echo json_encode($studentData ? $studentData : ["error" => "Student not found"]);
+      exit;
+      }
 }
 ?>
 
@@ -23,63 +24,13 @@ if (isset($_POST['id'])) {
     <title>Students Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/dashboard_admin.css"/>
+    <link rel="stylesheet" href="css/Students_dashboard.css"/>
 
-    <style>
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        h1 {
-            background-color: #0d6efd;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            border-radius: 0.5rem;
-        }
-
-        .btn-primary,
-        .search-btn,
-        .table-dark {
-            background-color: #0d6efd !important;
-            border-color: #0d6efd !important;
-            color: #fff !important;
-        }
-
-        .input-group .form-control {
-            border-color: #0d6efd;
-        }
-
-        .table thead th {
-            background-color: #0d6efd;
-            color: #fff;
-            border-color: #0d6efd;
-        }
-
-        .operation-icons i {
-            cursor: pointer;
-            padding: 0 5px;
-        }
-
-        .operation-icons .fa-eye {
-            color: #28a745;
-        }
-
-        .operation-icons .fa-edit {
-            color: #007bff;
-        }
-
-        .operation-icons .fa-trash {
-            color: #dc3545;
-        }
-    </style>
 </head>
 <body>
 
 <div class="container mt-5">
     <h1>Students Management</h1>
-    
     <div class="row justify-content-center mb-3">
         <div class="col-md-8">
             <div class="input-group">
@@ -114,7 +65,7 @@ if (isset($_POST['id'])) {
                 <td><?= htmlspecialchars($student['Email']); ?></td>
                 <td><?= htmlspecialchars($student['Status']); ?></td>
                 <td class="operation-icons">
-                    <i class="fas fa-eye" onclick="showStudentInfo(this)"></i>
+                    <i class="fas fa-eye" onclick="showStudentInfo(<?= $student['ID']; ?>)"></i>
                     <i class="fas fa-edit" onclick="editStudent(this)"></i>
                     <i class="fas fa-trash" onclick="openConfirmDeleteModal(this)"></i>
                 </td>
@@ -186,27 +137,80 @@ if (isset($_POST['id'])) {
         </div>
     </div>
 </div>
+<div class="modal fade" id="studentInfoModal" tabindex="-1" aria-labelledby="studentInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="studentInfoModalLabel">Student Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>ID:</strong> <span id="studentId"></span></p>
+                <p><strong>First Name:</strong> <span id="studentFirstName"></span></p>
+                <p><strong>Last Name:</strong> <span id="studentLastName"></span></p>
+                <p><strong>Email:</strong> <span id="studentEmail"></span></p>
+                <p><strong>Role:</strong> <span id="Role"></span></p>
+                <p><strong>RoleID:</strong> <span id="RoleID"></span></p>
+                <p><strong>Major:</strong> <span id="Major"></span></p>
+                <p><strong>Minor:</strong> <span id="Minor"></span></p>
+                <p><strong>Status:</strong> <span id="studentStatus"></span></p>
+                <p><strong>Sem GPA:</strong> <span id="Sem GPA"></span></p>
+                <p><strong>Cum GPA:</strong> <span id="Cum GPA"></span></p>
+                <p><strong>Sem CRDTH:</strong> <span id="Sem CRDTH"></span></p>
+                <p><strong>Total CRDTH:</strong> <span id="Total CRDTH"></span></p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <script>
-    function showStudentInfo(element) {
-        const row = element.closest('tr');
-        const id = row.cells[0].innerText;
-        const firstName = row.cells[1].innerText;
-        const lastName = row.cells[2].innerText;
-        const email = row.cells[3].innerText;
-        const status = row.cells[4].innerText;
+    function showStudentInfo(studentid) {
+        fetch('',{
+          method:'POST',
+          headers:{'Content-type':'application/x-www-form-urlencoded'},
+          body:'ID='+ studentid
+        })
+        .then(response=>response.json())
+        .then(data=>{
+          if (data.error) {
+                alert(data.error);
+            } else {
+                // Populate the modal with student data
+                document.getElementById('studentId').innerText = data.ID;
+                document.getElementById('studentFirstName').innerText = data.FName;
+                document.getElementById('studentLastName').innerText = data.LName;
+                document.getElementById('studentEmail').innerText = data.Email;
+                document.getElementById('Role').innerText = data.Role;
+                document.getElementById('RoleID').innerText = data.ROLEID;
+                document.getElementById('Major').innerText = data.Major;
+                document.getElementById('Minor').innerText = data.Minor;
+                document.getElementById('studentStatus').innerText = data.Status;
+                document.getElementById('Sem GPA').innerText = data['Sem gpa'];
+                document.getElementById('Cum GPA').innerText = data['Cum gpa'];
+                document.getElementById('Sem CRDTH').innerText = data['Sem crdth'];
+                document.getElementById('Total CRDTH').innerText = data['Total crdth'];
 
-        document.getElementById('studentid').innerText = `ID: ${id}`;
-        document.getElementById('studentFullName').innerText = `Name: ${firstName} ${lastName}`;
-        document.getElementById('studentEmail').innerText = `Email: ${email}`;
-        document.getElementById('studentStatus').innerText = `Status: ${status}`;
+                const modal = new bootstrap.Modal(document.getElementById('studentInfoModal'));
+                modal.show();
+              }
+      })
+      .catch(error => console.error('Error:', error));
 
-        const modal = new bootstrap.Modal(document.getElementById('studentInfoModal'));
-        modal.show();
+        // document.getElementById('studentid').innerText = `ID: ${id}`;
+        // document.getElementById('studentFullName').innerText = `Name: ${firstName} ${lastName}`;
+        // document.getElementById('studentEmail').innerText = `Email: ${email}`;
+        // document.getElementById('studentStatus').innerText = `Status: ${status}`;
+
+        // const modal = new bootstrap.Modal(document.getElementById('studentInfoModal'));
+        // modal.show();
     }
 
     function searchById() {

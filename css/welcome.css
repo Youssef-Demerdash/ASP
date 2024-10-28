@@ -9,13 +9,6 @@ body {
   height: 100%; /* Full height of the body */
 }
 
-<<<<<<< HEAD
-img {
-  height: 50vh; /* Keeps the height responsive */
-  max-width: 100%; /* Prevents image overflow */
-}
-
-=======
 .pt-24 {
   padding-top: 12rem; /* Reduced padding-top to make the page shorter */
 }
@@ -28,7 +21,6 @@ img {
   height: 50vh; /* Adjust image height to fit */
   width: 40%;
 }
->>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
 
 .wave-section {
   position: relative;
@@ -52,13 +44,7 @@ img {
 
 p{
   color: white;
-<<<<<<< HEAD
-  font-size: 40px;
-  text-align: center;
-
-=======
   font-size: 30px;
->>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
    
 }
 
@@ -88,7 +74,3 @@ p{
 .styled-btn:focus {
   outline: 3px solid rgba(160, 99, 201, 0.5);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
