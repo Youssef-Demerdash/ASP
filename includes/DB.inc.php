@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 <<<<<<< HEAD
-$DB = "project";
+$DB = "ASP";
 =======
 $DB = "asp";
 >>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
