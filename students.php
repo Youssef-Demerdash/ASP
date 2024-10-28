@@ -147,14 +147,6 @@ if (isset($_POST['id'])) {
                         <input type="email" class="form-control" id="email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="role" class="form-label">Role</label>
-                        <input type="text" class="form-control" id="role" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="roleId" class="form-label">Role ID</label>
-                        <input type="text" class="form-control" id="roleId" required>
-                    </div>
-                    <div class="mb-3">
                         <label for="major" class="form-label">Major</label>
                         <input type="text" class="form-control" id="major" required>
                     </div>
@@ -165,8 +157,8 @@ if (isset($_POST['id'])) {
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select class="form-select" id="status">
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
+                            <option value="regular">regular</option>
+                            <option value="probation">probation</option>
                         </select>
                     </div>
                     <div class="mb-3">
