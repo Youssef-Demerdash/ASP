@@ -10,7 +10,7 @@
 </head>
 <body>
 <aside>
-        <img src="img/logo.png" alt="Logo">
+        <img src="img/logo.png" alt="Logo width="90%">
       <br>
 
         <a href="Dashboard.php">
@@ -19,7 +19,7 @@
         </a>
 
         <a href="Schedule.php">
-        <img src="img/myschedule.png" alt="myschedule" class="myschedule">
+        <img src="img/clock.png" alt="myschedule" class="myschedule">
 
             <i class="fa fa-laptop"></i> Schedule
         </a>

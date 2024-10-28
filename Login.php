@@ -56,13 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
   }
 }
 
-
-
-
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     <meta name="description" content="Welcome to OnCampus. Log in to access your account." />
     <meta name="keywords" content="welcome, login, platform, student services" />
     <title>Welcome to OnCampus</title>
-    
+
     <link rel="stylesheet" href="css/Login.css" />
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />

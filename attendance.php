@@ -9,7 +9,7 @@
 </head>
 <body>
 <aside>
-        <img src="img/logo.png" alt="Logo">
+        <img src="img/logo.png" alt="Logo" width="90%">
       <br>
 
         <a href="Dashboard.php">
