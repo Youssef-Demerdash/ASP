@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Students Management</title>
+    <title>Doctors Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
@@ -54,7 +54,7 @@
 <body>
 
 <div class="container mt-5">
-    <h1 class="bg-dark text-light text-center py-2">Students Management</h1>
+    <h1 class="bg-dark text-light text-center py-2">Doctors Management</h1>
     
     <div class="row justify-content-center mb-3">
         <div class="col-md-8">
@@ -127,7 +127,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addStudentModalLabel">Add Student</h5>
+        <h5 class="modal-title" id="addStudentModalLabel">Add Doctor</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -155,7 +155,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" form="addStudentForm">Add Student</button>
+        <button type="submit" class="btn btn-primary" form="addStudentForm">Add Doctor</button>
       </div>
     </div>
   </div>
@@ -186,7 +186,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="studentInfoModalLabel">Student Information</h5>
+        <h5 class="modal-title" id="studentInfoModalLabel">Doctor Information</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -203,7 +203,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editStudentModalLabel">Edit Student</h5>
+        <h5 class="modal-title" id="editStudentModalLabel">Edit Doctor</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
