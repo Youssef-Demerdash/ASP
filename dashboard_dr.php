@@ -19,7 +19,7 @@
             <i class="fa fa-user-o"></i> Dashboard
         </a>
 
-        <a href="Schedule.php">
+        <a href="dr_Schedule.php">
          <img src="img/clock.png" alt="myschedule" class="myschedule">
             <i class="fa fa-laptop"></i> Schedule
         </a>

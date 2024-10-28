@@ -7,9 +7,9 @@
         <a class="nav-link " href="dashboard_dr.php">
             <i class="fas fa-user"></i> Dashboard
         </a>
-        <a class="nav-link" href="Schedule.php">
+        <a class="nav-link" href="dr_Schedule.php">
             <i class="fas fa-clock"></i> Schedule
-        </a>
+        </>
         <a class="nav-link" href="myProfile.php">
             <i class="fas fa-user-circle"></i> My Profile
         </a>

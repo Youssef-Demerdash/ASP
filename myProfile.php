@@ -59,8 +59,8 @@ session_start();
         </div>
     </div>
 
-        <a href="Schedule.php">
-        <img src="img/clock.png" alt="myschedule" class="myschedule">
+    <a href="dr_Schedule.php">
+    <img src="img/clock.png" alt="myschedule" class="myschedule">
 
             <i class="fa fa-laptop"></i> Schedule
         </a>
