@@ -8,9 +8,10 @@ $students =$studentsobject->getAllstudents();
 if (isset($_POST['id'])) {
   $studentId = $_POST['id'];
   $studentData = $studentsObject->getStudentByID($studentId);
-}
+
 if ($studentData) {
   echo "<script>var studentInfo = " . json_encode($studentData) . ";</script>";
+}
 }
 ?>
 
