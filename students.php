@@ -1,27 +1,18 @@
 <?php
 include_once "includes/DB.inc.php";
 include "classes.php";
-$studentsobject =new Student($conn);
-$students =$studentsobject->getAllstudents();
-
+$studentsobject = new Student($conn);
+$students = $studentsobject->getAllstudents();
 
 if (isset($_POST['id'])) {
-  $studentId = $_POST['id'];
-  $studentData = $studentsObject->getStudentByID($studentId);
+    $studentId = $_POST['id'];
+    $studentData = $studentsobject->getStudentByID($studentId);
 
-if ($studentData) {
-  echo "<script>var studentInfo = " . json_encode($studentData) . ";</script>";
-}
+    if ($studentData) {
+        echo "<script>var studentInfo = " . json_encode($studentData) . ";</script>";
+    }
 }
 ?>
-
-
-
-
-
-
-
-
 
 <!doctype html>
 <html lang="en">
@@ -32,25 +23,74 @@ if ($studentData) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/dashboard_admin.css"/>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            background-color: #0d6efd;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .btn-primary, .search-btn, .table-dark {
+            background-color: #0d6efd !important;
+            border-color: #0d6efd !important;
+            color: #fff !important;
+        }
+
+        .input-group .form-control {
+            border-color: #0d6efd;
+        }
+
+        .table thead th {
+            background-color: #0d6efd;
+            color: #fff;
+            border-color: #0d6efd;
+        }
+
+        .operation-icons i {
+            cursor: pointer;
+            padding: 0 5px;
+        }
+
+        .operation-icons .fa-eye {
+            color: #28a745;
+        }
+        .operation-icons .fa-edit {
+            color: #007bff;
+        }
+        .operation-icons .fa-trash {
+            color: #dc3545;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container mt-5">
-    <h1 class="bg-dark text-light text-center py-2">Students Management</h1>
+    <h1>Students Management</h1>
     
     <div class="row justify-content-center mb-3">
         <div class="col-md-8">
             <div class="input-group">
                 <input type="text" class="form-control" id="searchInput" placeholder="Search by ID">
-                <button class="search-btn input-group-text bg-dark text-light" onclick="searchById()">
+                <button class="search-btn input-group-text" onclick="searchById()">
                     <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-primary ms-2" type="button" data-bs-toggle="modal" data-bs-target="#addStudentModal">
+                    Add Student
                 </button>
             </div>
         </div>
     </div>
 
     <table class="table table-bordered table-striped table-hover" id="studentTable">
-      <thead class="table-dark">
+      <thead>
         <tr>
           <th scope="col">ID</th>
           <th scope="col">First Name</th>
@@ -69,10 +109,9 @@ if ($studentData) {
           <td><?=$student['Email'];?></td>
           <td><?=$student['Status'];?></td>
           <td class="operation-icons">
-            <i class="fas fa-eye text-success" onclick="showStudentInfo(this)"></i>
-            <i class="fas fa-edit text-primary" onclick="editStudent(this)"></i>
-            <i class="fas fa-trash text-danger" onclick="openConfirmDeleteModal(this)"></i>
-            <i class="fas fa-user-plus add-student-icon" title="Add Student" data-bs-toggle="modal" data-bs-target="#addStudentModal"></i>
+            <i class="fas fa-eye" onclick="showStudentInfo(this)"></i>
+            <i class="fas fa-edit" onclick="editStudent(this)"></i>
+            <i class="fas fa-trash" onclick="openConfirmDeleteModal(this)"></i>
           </td>
         </tr>
         <?php endwhile; ?>
@@ -103,11 +142,43 @@ if ($studentData) {
             <input type="email" class="form-control" id="email" required>
           </div>
           <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <input type="text" class="form-control" id="role" required>
+          </div>
+          <div class="mb-3">
+            <label for="roleId" class="form-label">Role ID</label>
+            <input type="text" class="form-control" id="roleId" required>
+          </div>
+          <div class="mb-3">
+            <label for="major" class="form-label">Major</label>
+            <input type="text" class="form-control" id="major" required>
+          </div>
+          <div class="mb-3">
+            <label for="minor" class="form-label">Minor</label>
+            <input type="text" class="form-control" id="minor" required>
+          </div>
+          <div class="mb-3">
             <label for="status" class="form-label">Status</label>
             <select class="form-select" id="status">
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
             </select>
+          </div>
+          <div class="mb-3">
+            <label for="semesterGPA" class="form-label">Semester GPA</label>
+            <input type="number" step="0.01" class="form-control" id="semesterGPA" required>
+          </div>
+          <div class="mb-3">
+            <label for="cumulativeGPA" class="form-label">Cumulative GPA</label>
+            <input type="number" step="0.01" class="form-control" id="cumulativeGPA" required>
+          </div>
+          <div class="mb-3">
+            <label for="semesterCreditHours" class="form-label">Semester Credit Hours</label>
+            <input type="number" class="form-control" id="semesterCreditHours" required>
+          </div>
+          <div class="mb-3">
+            <label for="totalCreditHours" class="form-label">Total Credit Hours</label>
+            <input type="number" class="form-control" id="totalCreditHours" required>
           </div>
         </form>
       </div>
@@ -119,110 +190,20 @@ if ($studentData) {
   </div>
 </div>
 
-<!-- Confirmation Modal for Deletion -->
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this record?</p>
-        <p id="deleteStudentInfo"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Student Info Modal -->
-<div class="modal fade" id="studentInfoModal" tabindex="-1" aria-labelledby="studentInfoModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="studentInfoModalLabel">Student Information</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p id="studentid"></p>
-        <p id="studentFullName"></p>
-        <p id="studentEmail"></p>
-        <p id="Role"></p>
-        <p id="RoleID"></p>
-        <p id="Major"></p>
-        <p id="Minor"></p>
-        <p id="studentStatus"></p>
-        <p id="Sem GPA"></p>
-        <p id="Cum GPA"></p>
-        <p id="Sem CRDTH"></p>
-        <p id="Total CRDTH"></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Edit Student Modal -->
-<div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editStudentModalLabel">Edit Student</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="editStudentForm">
-          <div class="mb-3">
-            <label for="editFirstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="editFirstName" required>
-          </div>
-          <div class="mb-3">
-            <label for="editLastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="editLastName" required>
-          </div>
-          <div class="mb-3">
-            <label for="editEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="editEmail" required>
-          </div>
-          <div class="mb-3">
-            <label for="editStatus" class="form-label">Status</label>
-            <select class="form-select" id="editStatus">
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="saveEditButton">Save Changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <script>
-    let rowToEdit;
-    let rowToDelete;
-
     function showStudentInfo(element) {
         const row = element.closest('tr');
-        const id=row.cells[0].innerText;
-
+        const id = row.cells[0].innerText;
         const firstName = row.cells[1].innerText;
         const lastName = row.cells[2].innerText;
         const email = row.cells[3].innerText;
-        const Major =row.cells[]
         const status = row.cells[4].innerText;
         
-        document.getElementById('studentid').innerText=`ID: ${id}`;
+        document.getElementById('studentid').innerText = `ID: ${id}`;
         document.getElementById('studentFullName').innerText = `Name: ${firstName} ${lastName}`;
         document.getElementById('studentEmail').innerText = `Email: ${email}`;
         document.getElementById('studentStatus').innerText = `Status: ${status}`;
@@ -231,75 +212,7 @@ if ($studentData) {
         modal.show();
     }
 
-    function editStudent(element) {
-        rowToEdit = element.closest('tr');
-        const firstName = rowToEdit.cells[1].innerText;
-        const lastName = rowToEdit.cells[2].innerText;
-        const email = rowToEdit.cells[3].innerText;
-        const status = rowToEdit.cells[4].innerText;
-
-        document.getElementById('editFirstName').value = firstName;
-        document.getElementById('editLastName').value = lastName;
-        document.getElementById('editEmail').value = email;
-        document.getElementById('editStatus').value = status;
-
-        const modal = new bootstrap.Modal(document.getElementById('editStudentModal'));
-        modal.show();
-    }
-
-    document.getElementById('saveEditButton').onclick = function() {
-        if (rowToEdit) {
-            const firstName = document.getElementById('editFirstName').value;
-            const lastName = document.getElementById('editLastName').value;
-            const email = document.getElementById('editEmail').value;
-            const status = document.getElementById('editStatus').value;
-
-            rowToEdit.cells[1].innerText = firstName;
-            rowToEdit.cells[2].innerText = lastName;
-            rowToEdit.cells[3].innerText = email;
-            rowToEdit.cells[4].innerText = status;
-
-            const modal = bootstrap.Modal.getInstance(document.getElementById('editStudentModal'));
-            modal.hide(); // Hide the modal
-            rowToEdit = null; // Clear the reference
-        }
-    };
-
-    function openConfirmDeleteModal(element) {
-        rowToDelete = element.closest('tr'); // Store the row to delete
-        const firstName = rowToDelete.cells[1].innerText; // Get first name
-        const lastName = rowToDelete.cells[2].innerText; // Get last name
-        document.getElementById('deleteStudentInfo').innerText = `${firstName} ${lastName}`;
-        const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
-        modal.show();
-    }
-
-    document.getElementById('confirmDeleteButton').onclick = function() {
-        if (rowToDelete) {
-            rowToDelete.remove(); // Remove the row from the table
-            rowToDelete = null; // Clear the reference
-            const modal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
-            modal.hide(); // Hide the modal
-        }
-    };
-
     function searchById() {
         const input = document.getElementById('searchInput').value;
         const table = document.getElementById('studentTable');
-        const rows = table.getElementsByTagName('tr');
-        
-        // Loop through all table rows, except the header
-        for (let i = 1; i < rows.length; i++) {
-            const cells = rows[i].getElementsByTagName('th');
-            const id = cells[0].innerText; // Get the ID from the first cell
-            if (id.includes(input)) {
-                rows[i].style.display = ''; // Show the row
-            } else {
-                rows[i].style.display = 'none'; // Hide the row
-            }
-        }
-    }
-</script>
-
-</body>
-</html>
+        const rows}
