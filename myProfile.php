@@ -13,10 +13,16 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> <!-- Font Awesome for icons -->
 </head>
 <body>
+<<<<<<< HEAD
     <div class="container-fluid">
         <div class="row">
             <!-- Include Sidebar -->
             <?php include 'sidebar.php'; ?>
+=======
+<aside>
+        <img src="img/logo.png" alt="Logo"  width="90%">
+      <br>
+>>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
 
             <!-- Main Content -->
             <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
@@ -60,8 +66,44 @@ session_start();
         </div>
     </div>
 
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+=======
+        <a href="Schedule.php">
+        <img src="img/clock.png" alt="myschedule" class="myschedule">
+
+            <i class="fa fa-laptop"></i> Schedule
+        </a>
+        <a href="myProfile.php">
+        <img src="img/myprofile.png" alt="myprofile" class="myprofile">
+
+            <i class="fa fa-clone"></i> My Profile
+        </a>
+        <a href="SignOut.php">
+        <img src="img/logout.png" alt="logout" class="logout">
+            <i class="fa fa-trash-o"></i> Log Out
+        </a>
+    </aside>
+    <?php
+session_start();
+echo "<h1>Your Profile</h1>";
+echo "First Name: " .   $_SESSION["FName"]."<br>";
+echo "Last Name: "  .	$_SESSION["LName"]."<br>";
+echo "Email :"      .	$_SESSION["Email"]."<br>";
+echo "Faculty: "    .	$_SESSION["Major"]."<br>";
+echo "Minor: "      .   $_SESSION["Minor"]."<br>";
+echo "Status:"      .   $_SESSION["Status"]."<br>";
+echo "Semester GPA:".   $_SESSION["Sem gpa"]."<br>";
+echo "CUM GPA:"     .   $_SESSION["Cum gpa"]."<br>";
+echo "Semester CRDH:".   $_SESSION["Sem crdh"]."<br>";
+echo "Total CRDH:"   .   $_SESSION["Total crdh"]."<br>";
+
+echo"<a href='Dashboard.php'>Back</a>";
+
+?>
+
+>>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
 </body>
 </html>

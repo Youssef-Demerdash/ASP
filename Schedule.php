@@ -14,10 +14,16 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
+<<<<<<< HEAD
     <div class="container-fluid">
         <div class="row">
             <!-- Include Sidebar -->
             <?php include 'sidebar.php'; ?>
+=======
+<aside>
+        <img src="img/logo.png" alt="Logo" width="90%">
+      <br>
+>>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
 
             <!-- Main Content -->
             <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
@@ -26,6 +32,7 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
                     <p>Manage your lectures and office hours efficiently.</p>
                 </header>
 
+<<<<<<< HEAD
                 <div class="schedule-content">
                     <table class="schedule-table table table-bordered">
                         <thead class="thead-light">
@@ -101,5 +108,23 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+=======
+        <a href="Schedule.php">
+        <img src="img/clock.png" alt="myschedule" class="myschedule">
+
+            <i class="fa fa-laptop"></i> Schedule
+        </a>
+        <a href="myProfile.php">
+        <img src="img/myprofile.png" alt="myprofile" class="myprofile">
+
+            <i class="fa fa-clone"></i> My Profile
+        </a>
+
+        <a href="SignOut.php">
+        <img src="img/logout.png" alt="logout" class="logout">
+            <i class="fa fa-trash-o"></i> Log Out
+        </a>
+    </aside>
+>>>>>>> 3fbfe76f8c57f567f75099d0e40e0dada37a875d
 </body>
 </html>
