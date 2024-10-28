@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin</title>
         <link rel="stylesheet" href="css/dashboard_admin.css">
 
 </head>
@@ -14,28 +14,16 @@
           <ul class="nav">
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
-                <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="img/face.jpg" alt="profile image">
-                  <div class="dot-indicator bg-success"></div>
-                </div>
-                <div class="text-wrapper">
-
-                  <p class="profile-name">
-                  <p class="designation">
-                </div>
-               
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Admin</span>
+                <i class="icon-layers menu-icon"></i>
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="dashboard.php">
-                <span class="menu-title">Dashboard</span>
-                <i class="icon-screen-desktop menu-icon"></i>
               </a>
             </li>
             
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">courses</span>
+                <span class="menu-title">Courses</span>
                 <i class="icon-layers menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic">
@@ -71,13 +59,13 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                <span class="menu-title">TAS</span>
+                <span class="menu-title">TAs</span>
                 <i class="icon-people menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic1">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="add-students.php">Add TAS</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="manage-students.php">Manage TAS</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="add-students.php">Add TAs</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="manage-students.php">Manage TAs</a></li>
                 </ul>
               </div>
             </li>
