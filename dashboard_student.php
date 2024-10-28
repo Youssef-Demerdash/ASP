@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/dashboard_student.css">
 
 </head>
 <body>
@@ -22,7 +22,7 @@
 
             <i class="fa fa-laptop"></i> Schedule
         </a>
-        <a href="myProfile.php">
+        <a href="myProfile_student.php">
         <img src="img/myprofile.png" alt="myprofile" class="myprofile">
 
             <i class="fa fa-clone"></i> My Profile
