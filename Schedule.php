@@ -26,10 +26,7 @@
 
             <i class="fa fa-clone"></i> My Profile
         </a>
-        <a href="attendance.php">
-        <img src="img/attendance.png" alt="attendance" class="attendance">
-            <i class="fa fa-star-o"></i> Attendance
-        </a>
+
         <a href="SignOut.php">
         <img src="img/logout.png" alt="logout" class="logout">
             <i class="fa fa-trash-o"></i> Log Out
