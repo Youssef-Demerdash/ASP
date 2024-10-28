@@ -9,18 +9,11 @@ body {
   height: 100%; /* Full height of the body */
 }
 
-.pt-24 {
-  padding-top: 12rem; /* Reduced padding-top to make the page shorter */
-}
-
-.container {
-  height: 70vh; /* Control height of the content container */
-}
-
 img {
-  height: 50vh; /* Adjust image height to fit */
-  width: 40%;
+  height: 50vh; /* Keeps the height responsive */
+  max-width: 100%; /* Prevents image overflow */
 }
+
 
 .wave-section {
   position: relative;
@@ -44,7 +37,9 @@ img {
 
 p{
   color: white;
-  font-size: 30px;
+  font-size: 40px;
+  text-align: center;
+
    
 }
 
@@ -74,3 +69,4 @@ p{
 .styled-btn:focus {
   outline: 3px solid rgba(160, 99, 201, 0.5);
 }
+

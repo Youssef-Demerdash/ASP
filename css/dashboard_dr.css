@@ -1,0 +1,98 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif; /* Font Family */
+    background-color: #f8f9fa; /* Light background for contrast */
+}
+
+/* Main Header */
+.main-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main-header h1 {
+    font-size: 28px; /* Main header size */
+    color: #343a40; /* Consistent header color */
+    margin-bottom: 20px; /* Spacing below the main header */
+}
+
+.main-header p {
+    font-size: 16px; /* Body text size */
+    color: #555;
+}
+
+/* Dashboard Content Layout */
+.dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.timeline, .calendar {
+    background-color: #fff;
+    padding: 20px; /* Consistent padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 580px;
+    margin-bottom: 20px; /* Spacing below sections */
+}
+
+.timeline h2, .calendar h2 {
+    font-size: 24px; /* Sub-header size */
+    margin-bottom: 15px; /* Spacing below sub-headers */
+    color: #343a40; /* Consistent color */
+}
+
+.timeline-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.timeline-list li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9fafb;
+    border-left: 4px solid #2980b9;
+}
+
+.timeline-list h3 {
+    font-size: 18px; /* Title size */
+    color: #343a40; /* Consistent text color */
+}
+
+.timeline-list p {
+    font-size: 14px; /* Body text size */
+    color: #666;
+}
+
+/* Calendar Styling */
+.calendar-container iframe {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Common styles for main content */
+main {
+    padding: 30px; /* Padding around main content */
+}
+
+h1, h2 {
+    color: #343a40; /* Dark heading color */
+    font-weight: bold; /* Ensure bold headings */
+}
+
+.summary-section {
+    background-color: white; /* White background for the summary section */
+    padding: 20px; /* Consistent padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}

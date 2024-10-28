@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Welcome to our platform. Log in to access your account." />
-    <meta name="keywords" content="welcome, login, platform" />
+
     <title>Welcome</title>
     
-    <link rel="stylesheet" href="css/welcome.css" /> <!-- Link to your custom CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <link rel="stylesheet" href="css/welcome.css" /> 
+0    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
 </head>
 
@@ -19,25 +18,22 @@
         <img src="img/logo.png" alt="Company Logo" />
         <p>Welcome to OnCampus</p>
     </div>
-
-    <div class="pt-12">
-        <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-            <!-- Left Col -->
-            <!-- Left Col -->
-
-            <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+    
+    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+ 
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
                 <a href="Login.php" class="styled-btn" aria-label="Log in to your account">Log In</a>
-                <a href="SignUp.php" class="styled-btn" aria-label="Log in to your account">Sign Up</a>
+                <a href="Login.php" class="styled-btn" aria-label="Sign up for an account">Sign Up</a>
+
             
             </div>
+            <div class="w-full md:w-3/5 py-6 flex justify-center md:justify-end">
+                    <img class="w-full md:w-4/5 z-50" src="img/hero.png" alt="Hero Image" />
+                </div>
 
 
-            <!-- Right Col -->
-            <div class="w-full md:w-3/5 py-6 text-center">
-                <img class="w-full md:w-4/5 z-50" src="img/hero.png" alt="Hero Image" />
-            </div>
-        </div>
     </div>
+
     
     <div class="wave-section">
         <svg viewBox="0 0 1428 174" xmlns="http://www.w3.org/2000/svg">

@@ -2,37 +2,23 @@
 include_once "includes/DB.inc.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Verifying Mail</title>
-</head>
-<body>
-<h1>Verifying Mail</h1>
-<form action="" method="post">
-    <label>Enter Your Verification Code:</label><br>
-    <input type="text" name="VCode"><br>
-    <input type="submit" value="Submit" name="Submit">
-    <input type="submit" value="Re-Send Code" name="resend_code">
-</form>
+
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $VCode = $_POST["VCode"] ?? '';
-    $VC = $_COOKIE['VCode'] ?? ''; // Check if cookie exists
-    $EmailUn = $_COOKIE['Emailforv'] ?? ''; // Check if cookie exists
-    $FnameforM = $_COOKIE['Fnameforv'] ?? ''; // Check if cookie exists
+    $VC = $_COOKIE['VCode'] ?? ''; // Get the verification code from the cookie
+    $EmailUn = $_COOKIE['Emailforv'] ?? ''; // Email for verification
 
     if (isset($_POST['Submit'])) {
         if ($VC === $VCode) {
-            echo "Mail Verified Successfully";
-            header("Location:Login.php");
-            exit(); // Ensure script stops after redirection
+            echo "<script>alert('Mail Verified Successfully');</script>";
+            // Redirect to password reset form
+            header("Location: reset_password.php");
+            exit();
         } else {
-            echo "Invalid Verification Code<br><br>";
+            echo "<script>alert('Invalid Verification Code');</script>";
         }
     }
 
@@ -40,26 +26,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $RVCode = bin2hex(random_bytes(3)); // Generate a new random code
         setcookie("VCode", $RVCode, time() + 1500); // Update cookie with the new code
 
-        require 'vendor/autoload.php'; // Load SendGrid
-
-        $email = new \SendGrid\Mail\Mail();
-        $email->setFrom("youssefashrafdem@gmail.com", "ASP");
-        $email->setSubject("VERIFY YOUR MAIL");
-        $email->addTo($EmailUn, $FnameforM);
-        $email->addContent("text/plain", "Your code: " . $RVCode);
-
-        $sendgrid = new \SendGrid('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');
-
+        // Resend email logic using PHPMailer
+        require 'vendor/autoload.php'; // Include PHPMailer
+        
+        $mail = new PHPMailer(true);
         try {
-            $response = $sendgrid->send($email);
-            echo "Verification code has been resent to your email.";
+            //Server settings
+            $mail->isSMTP();                                            
+            $mail->Host = 'smtp.example.com';  
+            $mail->SMTPAuth = true;                                   
+            $mail->Username = 'your-email@example.com';                 
+            $mail->Password = 'your-email-password';                          
+            $mail->SMTPSecure = 'tls';                               
+            $mail->Port = 587;                                       
+
+            //Recipients
+            $mail->setFrom('your-email@example.com', 'Your Website');
+            $mail->addAddress($EmailUn);    
+
+            //Content
+            $mail->isHTML(true);                                  
+            $mail->Subject = 'Password Reset Verification Code';
+            $mail->Body    = 'Your new verification code is: ' . $RVCode;
+
+            $mail->send();
+            echo "<script>alert('Verification code resent to your email');</script>";
         } catch (Exception $e) {
-            error_log('Caught exception: ' . $e->getMessage());
-            echo "An error occurred while sending the email.";
+            echo "<script>alert('Verification email could not be sent.');</script>";
         }
     }
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/verify.css">
+    <title>Verify Mail</title>
+</head>
+<body>
+<div class="container">
 
+<h4>Verify Mail</h4>
+<form action="" method="post">
+    <label>Enter Your Verification Code:</label><br>
+    <input type="text" name="VCode"><br>
+    <input type="submit" value="Submit" name="Submit">
+    <input type="submit" value="Re-Send Code" name="resend_code">
+</form>
+</div>
 </body>
 </html>

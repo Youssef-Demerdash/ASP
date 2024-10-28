@@ -1,0 +1,47 @@
+/* sidebar.css */
+.sidebar {
+    background-color: #343a40; /* Dark sidebar color */
+    color: white;
+    height: 100vh; /* Full height */
+    padding: 20px; /* Padding for top and bottom */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Slight shadow for depth */
+    position: sticky; /* Make it sticky */
+    top: 0; /* Stick to the top */
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px; /* Space below logo */
+}
+
+.sidebar-header img {
+    width: 80%; /* Responsive logo size */
+}
+
+.nav-link {
+    color: white; /* White text color */
+    padding: 10px 15px; /* Reduced padding for compactness */
+    transition: background 0.3s, color 0.3s;
+    font-size: 16px; /* Adjusted font size */
+}
+
+.nav-link:hover {
+    background-color: #495057; /* Lighter dark color on hover */
+    color: #ffffff; /* Ensure text remains white */
+}
+
+.nav-link.active {
+    background-color: #007bff; /* Active link color */
+    border-radius: 5px; /* Slight rounding of active link */
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute; /* For smaller screens, position it absolutely */
+        width: 200px; /* Fixed width for sidebar */
+    }
+    main {
+        margin-left: 220px; /* Space for sidebar */
+    }
+}
