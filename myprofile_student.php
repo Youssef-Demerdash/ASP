@@ -13,7 +13,7 @@
         <img src="img/logo.png" alt="Logo" width="90%">
         <br>
         <nav>
-            <a href="Dashboard.php">
+            <a href="dashboard_student.php">
                 <img src="img/dashboard.png" alt="Dashboard" class="dashboard">
                 <i class="fa fa-user-o"></i> Dashboard
             </a>
