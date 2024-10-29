@@ -8,42 +8,57 @@ body {
 }
 
 .profile-section {
-    width: 800px;
-    max-width: 90%; /* Ensures the profile section fits well on smaller screens */
+    width: 1400px;
     background: white;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
-    margin: 0 auto; /* Center the section on the page */
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-left: 25%;
+    margin-right: 15%;
+    height:900px;
 }
 
 .profile-section h1 {
     text-align: center;
     color: #2e3a4e;
     font-size: 2em;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
+    margin-top: 0%;
 }
 
 .profile-form {
     display: flex;
     flex-direction: column;
+    gap: 20px; /* Increased space between each input row */
 }
 
+/* Flex container for each label-input pair */
+.form-group {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for labels */
 .profile-form label {
-    margin-top: 15px;
+    width: 140px; /* Adjust based on the label length */
+    margin-right: 20px; /* Space between label and input */
     font-weight: bold;
     color: #2e3a4e;
-    font-size: 1.1em;
+    font-size: 18px; /* Increased font size for better visibility */
+    text-align: Left; /* Align text to the right */
+    font-family: 'Verdana', sans-serif; /* Change font family */
+    text-transform: uppercase; /* Make text uppercase */
 }
 
+/* Styling for input fields */
 .profile-form input {
-    padding: 12px;
-    margin-top: 5px;
+    flex: 1;
+    padding: 15px; /* Increased padding for a larger rectangle */
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 18px; /* Increased font size */
     transition: border 0.3s ease;
 }
 
@@ -76,33 +91,10 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 50px;
+    padding: 60px;
 }
 
-/* Media Query for Smaller Screens */
 @media (max-width: 768px) {
-    .profile-section {
-        width: 100%;
-        padding: 25px;
-    }
-
-    .profile-form button {
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    .container {
-        flex-direction: column;
-        padding: 20px;
-    }
-}
-@media (max-width: 768px) {
-    aside {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
     .container {
         flex-direction: column;
         margin-left: 0;
@@ -112,6 +104,7 @@ body {
     .profile-section {
         width: 100%;
         padding: 25px;
+        min-height: auto; /* Adjust height for smaller screens */
     }
 
     .profile-form button {
