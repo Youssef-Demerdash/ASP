@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Student Dashboard</title>
     <link rel="stylesheet" href="css/dashboard_student.css">
 
 </head>
@@ -12,8 +12,8 @@
         <img src="img/logo.png" alt="Logo" width="90%">
       <br>
 
-        <a href="Dashboard.php">
-            <img src="img/dashboard.png" alt="dashboard" class="dashboard">
+      <a href="dashboard_student.php">
+      <img src="img/dashboard.png" alt="dashboard" class="dashboard">
             <i class="fa fa-user-o"></i> Dashboard
         </a>
 
@@ -27,9 +27,10 @@
 
             <i class="fa fa-clone"></i> My Profile
         </a>
-        <a href="attendance.php">
-        <img src="img/attendance.png" alt="attendance" class="attendance">
-            <i class="fa fa-star-o"></i> Attendance
+        <a href="help_student.php">
+        <img src="img/help.png" alt="help" class="help">
+
+            <i class="fa fa-clone"></i> Help
         </a>
         <a href="SignOut.php">
         <img src="img/logout.png" alt="logout" class="logout">
@@ -37,3 +38,4 @@
         </a>
     </aside>
 </body>
+</html>

@@ -25,10 +25,11 @@
                 <img src="img/myprofile.png" alt="My Profile" class="myprofile">
                 <i class="fa fa-clone"></i> My Profile
             </a>
-            <a href="attendance.php">
-                <img src="img/attendance.png" alt="Attendance" class="attendance">
-                <i class="fa fa-star-o"></i> Attendance
-            </a>
+            <a href="help_student.php">
+        <img src="img/help.png" alt="help" class="help">
+
+            <i class="fa fa-clone"></i> Help
+        </a>
             <a href="SignOut.php">
                 <img src="img/logout.png" alt="Log Out" class="logout">
                 <i class="fa fa-trash-o"></i> Log Out

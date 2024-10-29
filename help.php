@@ -79,7 +79,7 @@ session_start();
                     <p><strong>For immediate assistance:</strong> Contact our support team at <a href="mailto:support@example.com">support@example.com</a>.</p>
                 </section>
 
-                <a href='Dashboard_dr.php' class="btn btn-primary">🔙 Return to Dashboard</a>
+                <a href='dashboard_dr.php' class="btn btn-primary">🔙 Return to Dashboard</a>
             </main>
         </div>
     </div>
