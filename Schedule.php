@@ -7,7 +7,7 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor's Schedule</title>
+    <title>Student's Schedule</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/schedule.css"> <!-- New Schedule CSS -->
     <link rel="stylesheet" href="css/dashboard_student.css"> <!-- Student Dashboard CSS -->
