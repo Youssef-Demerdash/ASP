@@ -1,56 +1,118 @@
 <?php
-var_dump($_POST);
 session_start();
 include_once "includes/DB.inc.php";
 include "classes.php";
+var_dump($_POST);
 if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 } else {
     echo "Database connected successfully.";
 }
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["Email"]) && isset($_POST["Password"])) {
         $Email = $_POST["Email"];
         $Password = $_POST["Password"];
 
-        if ($stmt = $conn->prepare("
-            SELECT 'student' AS role, Email, Password, ROLEID FROM students WHERE Email = ? 
-            UNION ALL
-            SELECT 'doctor' AS role, Email, Password, ROLEID FROM doctors WHERE Email = ? 
-            UNION ALL
-            SELECT 'admin' AS role, Email, Password, ROLEID FROM admins WHERE Email = ? 
-            UNION ALL
-            SELECT 'ta' AS role, Email, Password, ROLEID FROM ta WHERE Email = ? 
-        ")) {
-            $stmt->bind_param("ssss", $Email, $Email, $Email, $Email);
+        if ($stmt = $conn->prepare("SELECT * FROM students WHERE Email = ?")) {
+            $stmt->bind_param("s", $Email);
             $stmt->execute();
             $result = $stmt->get_result();
 
             if ($row = $result->fetch_assoc()) {
                 // Verify the password
                 if ($Password === $row['Password']) {
-                    $_SESSION['ROLEID'] = $row['ROLEID'];
-                    // Redirect based on role
-                    switch ($_SESSION['ROLEID']) {
-                        case 0:
-                            header("Location: dashboard_admin.php?login=success");
-                            break;
-                        case 1:
-                            header("Location: Dashboard.php?login=success");
-                            break;
-                        case 2:
-                            header("Location: dashboard_dr.php?login=success");
-                            break;
-                        default:
-                            header("Location: dashboard_ta.php?login=success");
-                    }
+                    $_SESSION["ID"]=$row["ID"];
+                    $_SESSION["FName"]=$row["FName"];
+                    $_SESSION["LName"]=$row["LName"];
+                    $_SESSION["Email"]=$row["Email"];
+                    $_SESSION["Password"]=$row["Password"];
+                    $_SESSION["Role"]=$row["Role"];
+                    $_SESSION["ROLEID"] = $row["ROLEID"];
+                    $_SESSION["Major"]=$row["Major"];
+                    $_SESSION["Minor"]=$row["Minor"];
+                    $_SESSION["Status"]=$row["Status"];
+                    $_SESSION["Sem GPA"]=$row["Sem gpa"];
+                    $_SESSION["Cum GPA"]=$row["Cum gpa"];
+                    $_SESSION["Sem crdth"]=$row["Sem crdth"];
+                    $_SESSION["Total crdth"]=$row["Total crdth"];
+                    header("Location: dashboard_student.php?login=success");
                     exit();
-                } else {
-                    $loginError = "Invalid Email or Password";
                 }
-            } else {
-                $loginError = "Invalid Email or Password";
+            }
+            $stmt->close();
+        }
+
+        // Check for doctor
+        if ($stmt = $conn->prepare("SELECT * FROM doctors WHERE Email = ?")) {
+            $stmt->bind_param("s", $Email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($row = $result->fetch_assoc()) {
+                // Verify the password
+                if ($Password === $row['Password']) {
+                    $_SESSION["ID"]=$row["ID"];
+                    $_SESSION["FName"]=$row["FName"];
+                    $_SESSION["LName"]=$row["LName"];
+                    $_SESSION["Email"]=$row["Email"];
+                    $_SESSION["Password"]=$row["Password"];
+                    $_SESSION["Role"]=$row["Role"];
+                    $_SESSION["ROLEID"] = $row["ROLEID"];
+                    $_SESSION["faculty"]=$row["faculty"];
+                    $_SESSION["course code"]=$row["course code"];
+                    header("Location: dashboard_dr.php?login=success");
+                    exit();
+                }
+            }
+            $stmt->close();
+        }
+
+        // Check for admin
+        if ($stmt = $conn->prepare("SELECT * FROM admins WHERE Email = ?")) {
+            $stmt->bind_param("s", $Email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($row = $result->fetch_assoc()) {
+                // Verify the password
+                if ($Password === $row['Password']) {
+                    $_SESSION["ID"]=$row["ID"];
+                    $_SESSION["FName"]=$row["FName"];
+                    $_SESSION["LName"]=$row["LName"];
+                    $_SESSION["Email"]=$row["Email"];
+                    $_SESSION["Password"]=$row["Password"];
+                    $_SESSION["Role"]=$row["Role"];
+                    $_SESSION["ROLEID"] = $row["ROLEID"];
+                    header("Location: dashboard_admin.php?login=success");
+                    exit();
+                }
+            }
+            $stmt->close();
+        }
+
+        // Check for TA
+        if ($stmt = $conn->prepare("SELECT * FROM ta WHERE Email = ?")) {
+            $stmt->bind_param("s", $Email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($row = $result->fetch_assoc()) {
+                // Verify the password
+                if ($Password === $row['Password']) {
+                    $_SESSION["ID"]=$row["ID"];
+                    $_SESSION["FName"]=$row["FName"];
+                    $_SESSION["LName"]=$row["LName"];
+                    $_SESSION["Email"]=$row["Email"];
+                    $_SESSION["Password"]=$row["Password"];
+                    $_SESSION["Role"]=$row["Role"];
+                    $_SESSION["ROLEID"] = $row["ROLEID"];
+                    $_SESSION["faculty"]=$row["faculty"];
+                    $_SESSION["course code"]=$row["course code"];
+                    header("Location: dashboard_ta.php?login=success");
+                    exit();
+                }
             }
             $stmt->close();
         } else {
