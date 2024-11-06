@@ -2,12 +2,12 @@
 session_start();
 include_once "includes/DB.inc.php";
 include "classes.php";
-var_dump($_POST);
-if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
-} else {
-    echo "Database connected successfully.";
-}
+//var_dump($_POST);
+// if (!$conn) {
+//     die("Database connection failed: " . mysqli_connect_error());
+// } else {
+//     echo "Database connected successfully.";
+// }
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -167,7 +167,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
-    <!-- Other content here -->
 
 </body>
 </html>
