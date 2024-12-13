@@ -91,4 +91,22 @@ class TA extends user{
      }
 }
 
+class Schedule{
+    public $S_ID;
+    public $course_name;
+    public $course_code;
+    public $D_ID;
+    public $Slots;
+    function __construct($S_ID,$course_name,$course_code,$D_ID,$Slots){
+        $this->S_ID=$S_ID;
+        $this->course_name=$course_name;
+        $this->course_code=$course_code;
+        $this->D_ID=$D_ID;
+        $this->Slots=$Slots;
+    }
+    
+
+
+}
+
 ?>
