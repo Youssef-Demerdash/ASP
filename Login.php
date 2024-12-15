@@ -132,44 +132,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Welcome to OnCampus. Log in to access your account." />
-    <meta name="keywords" content="welcome, login, platform, student services" />
+    <meta name="description" content="Welcome to OnCampus. Log in or sign up to access your account." />
+    <meta name="keywords" content="welcome, login, signup, platform, student services" />
     <title>Welcome to OnCampus</title>
-
-    <link rel="stylesheet" href="css/Login.css" />
+    
+    <!-- Tailwind CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <link rel="stylesheet" href="css/Login.css"> <!-- Sidebar CSS -->
+    
 </head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center">
 
-<body class="bg-gradient-to-r from-blue-400 to-blue-600 min-h-[80vh] flex flex-col justify-center py-8">
+    <!-- Main Container -->
+    <div class="flex w-full h-screen relative">
+        <!-- Logo at Top-Left -->
+        <div class="absolute top-8 left-8 z-50">
+            <img src="img/logo.png" alt="Company Logo" class="w-32 md:w-48" />
+        </div>
 
-<!-- Blurred Login Form Overlay -->
-<div class="login-form-container">
-    <div class="login-form">
-        <h2>Login</h2>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-            <input type="email" name="Email" placeholder="Enter your email" required>
-            <input type="password" name="Password" placeholder="Enter your password" required>
-            <input type="submit" value="Login">
-        </form>
-    </div>
-</div>
+        <!-- Left Section -->
+        <div class="w-full md:w-1/2 flex items-center justify-center bg-cover bg-center relative" style="background-image: url('img/hero.png');">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <!-- Welcome Text -->
+            <div class="z-10 p-8 text-white text-left max-w-lg">
+                <h1 class="text-4xl md:text-3xl font-bold leading-tight mb-4">Welcome to </h1>
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Your one-stop platform for academic success.</h1>
+            </div>
+        </div>
 
-<!-- Main Content -->
-
-    <div class="flex flex-col items-center mb-6 text-center">
-        <img src="img/logo.png" alt="Company Logo" class="w-24 mb-2" />
-        <h1 class="text-3xl md:text-4xl text-white font-bold">Welcome to OnCampus</h1>
-        <p class="text-md md:text-lg text-white mt-1">Your one-stop platform for academic success.</p>
-
-        <div class="w-full md:w-3/5 py-4 text-center">
-            <img class="w-full md:w-4/5 z-50" src="img/hero.png" alt="Hero Image" />
+        <!-- Right Section with Gradient and Clip Path -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center items-center" style="background: linear-gradient(to top, #005f73, #00c9f2); -webkit-clip-path: ellipse(80% 70% at 50% 50%); clip-path: ellipse(80% 70% at 50% 50%);">
+            <!-- Blurred Login Form Overlay -->
+            <div class="login-form-container">
+                <div class="login-form">
+                    <h2 class="text-white text-2xl font-bold mb-6">Login</h2>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                        <input type="email" name="Email" placeholder="Enter your email" required class="mb-4 p-2 w-full rounded-md border border-gray-300">
+                        <input type="password" name="Password" placeholder="Enter your password" required class="mb-4 p-2 w-full rounded-md border border-gray-300">
+                        <input type="submit" value="Login" class="w-full p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
-
 </body>
 </html>
+
 
 
 

@@ -1,6 +1,10 @@
 <?php
 session_start();
 include_once "includes/DB.inc.php";
+
+// Fetch the user's first name and last name from the database (if needed)
+$userFirstName = $_SESSION['FName'];
+$userLastName = $_SESSION['LName'];
 ?>
 
 <!DOCTYPE html>
@@ -9,148 +13,22 @@ include_once "includes/DB.inc.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <style>
-        body {
-            display: flex;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #39464e;
-        }
-
-        /* Sidebar styling */
-        .sidebar {
-            width: 200px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #f5f7f9;
-            border-right: 1px solid #ddd;
-            overflow-y: auto;
-            padding-top: 50px;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar-hidden {
-            transform: translateX(-100%);
-        }
-
-        /* Sidebar content styling */
-        .navbar {
-            padding: 0;
-        }
-
-        .navbar-header {
-            padding: 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #e7e7e7;
-        }
-
-        /* Toggle button styling */
-        .label-check {
-            display: none;
-        }
-
-        .navbar-nav {
-            list-style: none;
-            padding: 0;
-        }
-
-        .navbar-nav li a {
-            display: block;
-            color: #5f5f5f;
-            padding: 15px 25px;
-            font-size: 15px;
-            text-decoration: none;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .navbar-nav li a:hover,
-        .navbar-nav li.active a {
-            background-color: #e0e0e0;
-            color: #007bff;
-        }
-
-        .hamburger-label {
-            width: 70px;
-            height: 58px;
-            position: absolute;
-            top: 20px;
-            left: 210px;
-            cursor: pointer;
-            z-index: 1001;
-            transition: left 0.3s ease; /* Smooth transition for the button position */
-        }
-
-
-        .navbar-brand {
-            color: #39464e;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .navbar-nav {
-            list-style: none;
-            padding: 0;
-        }
-
-        /* Move the button to the left when sidebar is hidden */
-        .sidebar-hidden + .hamburger-label {
-            left: 20px;
-        }
-
-        .hamburger-label div {
-            width: 70px;
-            height: 6px;
-            background-color: #39464e;
-            position: absolute;
-            transition: all 0.3s ease;
-        }
-
-        .line1 { top: 10px; }
-        .line2 { top: 24px; }
-        .line3 { top: 38px; }
-
-        /* Rotate lines on sidebar toggle */
-        #label-check:checked + .hamburger-label .line1 {
-            transform: rotate(28deg) scaleX(0.55) translate(39px, -4.5px);
-            border-radius: 50px 50px 50px 0;
-        }
-        #label-check:checked + .hamburger-label .line3 {
-            transform: rotate(-28deg) scaleX(0.55) translate(39px, 4.5px);
-            border-radius: 0 50px 50px 50px;
-        }
-        #label-check:checked + .hamburger-label .line2 {
-            width: 45px;
-            border-radius: 25px;
-        }
-
-        /* Dashboard styling */
-        .dashboard {
-            flex: 1;
-            margin-left: 220px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/dashboard_student.css">
 </head>
-<body>
+<body class="gradient-clipped-background">
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <nav class="navbar" role="navigation">
             <div class="navbar-header">
+                <!-- Logo in the top left corner -->
+                <img src="logo.png" class="logo">
                 <h1>On Campus</h1>
             </div>
             <ul class="navbar-nav">
-                <li><a href="Schedule.php"><i class="fa fa-dashboard"></i> Schedule</a></li>
-                <li><a href="myProfile_student.php"><i class="fa fa-puzzle-piece"></i> My Profile</a></li>
-                <li><a href="SignOut.php"><i class="fa fa-heart"></i> Log Out</a></li>
+                <li><a href="dashboard_student.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li><a href="Schedule.php"><i class="fa fa-calendar"></i> Schedule</a></li>
+                <li><a href="myProfile_student.php"><i class="fa fa-user"></i> My Profile</a></li>
+                <li><a href="SignOut.php"><i class="fa fa-sign-out"></i> Log Out</a></li>
             </ul>
         </nav>
     </div>
@@ -166,11 +44,39 @@ include_once "includes/DB.inc.php";
     <!-- Dashboard Content -->
     <div class="dashboard">
         <header>
-            <h1>Student's Dashboard</h1>
-            <h2>Welcome <?php echo $_SESSION['FName']." ".$_SESSION['LName']; ?></h2>
+            <!-- Welcome Box with Grey Background -->
+            <div class="welcome-box">
+                <h1>Welcome <?php echo $userFirstName . " " . $userLastName; ?></h1>
+                <p>Your personalized student dashboard</p>
+            </div>
+            
+            <!-- AI Companion Box -->
+            <div class="ai-companion-box">
+                <h2>X.SERA: Your AI Companion</h2>
+                <p>Give AI a try and enjoy the future of learning!</p>
+            </div>
         </header>
+
         <div class="dashboard-content">
-            <!-- Content goes here -->
+            <!-- Main Categories Section -->
+            <div class="main-categories">
+                <div class="category-box">
+                    <h3>Courses</h3>
+
+                </div>
+                <div class="category-box">
+                    <h3>Attendance</h3>
+
+                </div>
+                <div class="category-box">
+                    <h3>Grades</h3>
+
+                </div>
+                <div class="category-box">
+                    <h3>Schedule</h3>
+
+                </div>
+            </div>
         </div>
     </div>
 
