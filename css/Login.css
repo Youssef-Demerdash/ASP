@@ -1,22 +1,35 @@
+/* Login.css */
+
+/* Gradient and Clip Path for the right section */
+.gradient-clipped-background {
+    background: linear-gradient(to top, #005f73, #00c9f2); /* Gradient from dark to light */
+    -webkit-clip-path: ellipse(80% 70% at 50% 50%);
+    clip-path: ellipse(80% 70% at 50% 50%);
+    width: 100%;
+    height: 100vh; /* Ensure full height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-form-container {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 13%; /* Position it to the right side */
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end; /* Aligns the form to the right */
     z-index: 1000;
 }
-
 .login-form {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.2); /* Transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    width: 400px;
     text-align: center;
 }
 
@@ -26,26 +39,25 @@
     color: #fff;
 }
 
+/* Login Form input fields and submit button */
 .login-form input[type="email"],
-.login-form input[type="password"] {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.3);
-    color: #333;
-}
-
+.login-form input[type="password"],
 .login-form input[type="submit"] {
     width: 100%;
-    padding: 0.5rem;
-    background-color: rgba(74, 144, 226, 0.8);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+/* Submit Button styling */
+.login-form input[type="submit"] {
+    background-color: rgba(150, 158, 168, 0.8);
     color: #fff;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .login-form input[type="submit"]:hover {
