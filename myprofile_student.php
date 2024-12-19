@@ -10,6 +10,7 @@ include_once "includes/DB.inc.php";
     <title>My Profile</title>
     <link rel="stylesheet" href="css/dashboard_student.css">
     <link rel="stylesheet" href="css/myProfile_student.css">
+
     <style>
 
         .body {
@@ -140,19 +141,10 @@ include_once "includes/DB.inc.php";
         }
     </style>
 </head>
+<?php include 'sidebar_student.php'; ?>
+
 <body>
-<div class="sidebar" id="sidebar">
-    <nav class="navbar" role="navigation">
-        <div class="navbar-header">
-            <h1>On Campus</h1>
-        </div>
-        <ul class="navbar-nav">
-            <li><a href="Schedule.php"><i class="fa fa-dashboard"></i> Schedule</a></li>
-            <li><a href="myProfile_student.php"><i class="fa fa-puzzle-piece"></i> My Profile</a></li>
-            <li><a href="SignOut.php"><i class="fa fa-heart"></i> Log Out</a></li>
-        </ul>
-    </nav>
-</div>
+
 
 <!-- Toggle Button -->
 <input class="label-check" id="label-check" type="checkbox">

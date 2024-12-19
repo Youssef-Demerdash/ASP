@@ -78,7 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <link rel="stylesheet" href="css/Signup.css"> <!-- Sidebar CSS -->
-    
+    <style>
+    input::placeholder, select::placeholder {
+        color: black;
+        opacity: 1;
+    }
+</style>
+
 </head>
 <body class="min-h-screen bg-gray-100 flex items-center justify-center">
 

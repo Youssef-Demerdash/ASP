@@ -134,18 +134,8 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
     </style>
 </head>
 <body>
-<div class="sidebar" id="sidebar">
-        <nav class="navbar" role="navigation">
-            <div class="navbar-header">
-                <h1>On Campus</h1>
-            </div>
-            <ul class="navbar-nav">
-                <li class="active"><a href="Schedule.php"><i class="fa fa-dashboard"></i> Schedule</a></li>
-                <li><a href="myProfile_student.php"><i class="fa fa-puzzle-piece"></i> My Profile</a></li>
-                <li><a href="SignOut.php"><i class="fa fa-heart"></i> Log Out</a></li>
-            </ul>
-        </nav>
-    </div>
+<?php include 'sidebar_student.php'; ?>
+
 
     <!-- Toggle Button -->
     <input class="label-check" id="label-check" type="checkbox">
