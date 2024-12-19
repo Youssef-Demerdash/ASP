@@ -18,8 +18,8 @@ body {
 
 /* Sidebar styling */
 .sidebar {
-  width: 180px; /* Narrower sidebar */
-  background-color: #cae2e4; /* Lighter blue */
+  width: 140px; /* Narrower sidebar */
+  background-color: #efefef; /* Lighter blue */
   color: rgb(9, 9, 9);
   height: 100vh;
   padding: 10px;
@@ -36,6 +36,8 @@ body {
 .navbar-nav {
   list-style: none;
   padding: 0;
+  font-size: 20px;
+  color: #000;
 }
 
 .navbar-nav li {
@@ -43,9 +45,9 @@ body {
 }
 
 .navbar-nav a {
-  color: white;
+  color: rgb(12, 12, 12);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   display: flex;
   align-items: center;
 }
@@ -68,9 +70,62 @@ header {
   margin-bottom: 30px;
 }
 
-/* Welcome Box Styling (Grey Background) */
+/* Welcome and AI Companion Box Styling */
+.welcome-box, .ai-companion-box {
+  background-color: #116993 !important; /* Use the specified color */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+/* Adjusted content inside the AI Companion Box */
+.ai-companion-box .image-container {
+  flex: 0 0 auto;
+  margin-right: 15px;
+}
+
+.ai-companion-box img.sera-icon {
+  width: 80px; /* Adjust size as needed */
+  height: auto;
+}
+
+.ai-companion-box .future-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ai-companion-box .future-content p {
+  color: #fff;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.ai-companion-box .future-arrow-btn {
+  margin-top: 10px;
+}
+
+.ai-companion-box .future-button {
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  align-self: flex-start;
+}
+
+.ai-companion-box .future-button:hover {
+  background-color: #45a049;
+}
+
+/* Welcome Box Styling */
 .welcome-box {
-  background-color: #d3d3d3; /* Grey background */
+  background-color: #116993; /* Grey background */
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -78,30 +133,12 @@ header {
 
 .welcome-box h1 {
   font-size: 32px;
-  color: #333;
+  color: #116993;
 }
 
 .welcome-box p {
   font-size: 18px;
-  color: #666;
-}
-
-/* AI Companion Box Styling */
-.ai-companion-box {
-  background-color: #f0f0f0; /* Light grey background */
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 30px;
-}
-
-.ai-companion-box h2 {
-  font-size: 24px;
-  color: #333;
-}
-
-.ai-companion-box p {
-  font-size: 16px;
-  color: #666;
+  color: #66666693;
 }
 
 /* Main Categories styling */
@@ -165,4 +202,18 @@ header {
   .category-box {
       width: 48%; /* Make boxes fit smaller screens */
   }
+}
+
+.future-button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 15px; /* Padding */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+}
+
+.future-button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
