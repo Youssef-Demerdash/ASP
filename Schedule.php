@@ -41,11 +41,6 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
             border-bottom: 1px solid #e7e7e7;
         }
 
-        /* Toggle button styling */
-        .label-check {
-            display: none;
-        }
-
         .navbar-nav {
             list-style: none;
             padding: 0;
@@ -74,9 +69,8 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
             left: 210px;
             cursor: pointer;
             z-index: 1001;
-            transition: left 0.3s ease; /* Smooth transition for the button position */
+            transition: left 0.3s ease;
         }
-
 
         .navbar-brand {
             color: #39464e;
@@ -134,7 +128,7 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
     </style>
 </head>
 <body>
-<?php include 'sidebar_student.php'; ?>
+<?php include 'sidebar_student.php'; ?> 
 
 
     <!-- Toggle Button -->
@@ -168,7 +162,7 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
                 </thead>
                 <tbody>
                     <tr>
-                        <td>8:00 AM - 9:00 AM</td>
+                        <td>9:15 AM - 10:15 AM</td>
                         <td>Data Structures</td>
                         <td>Introduction to Programming</td>
                         <td>Data Structures</td>
@@ -176,20 +170,12 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
                         <td>Software Engineering</td>
                     </tr>
                     <tr>
-                        <td>9:15 AM - 10:15 AM</td>
+                        <td>10:30 AM - 11:30 AM</td>
                         <td>Machine Learning</td>
                         <td>Web Development</td>
                         <td>Machine Learning</td>
                         <td>Database Systems</td>
                         <td>Artificial Intelligence</td>
-                    </tr>
-                    <tr>
-                        <td>10:30 AM - 11:30 AM</td>
-                        <td>Computer Networks</td>
-                        <td>Cybersecurity</td>
-                        <td>Computer Networks</td>
-                        <td>Human-Computer Interaction</td>
-                        <td>Mobile App Development</td>
                     </tr>
                     <tr>
                         <td>11:45 AM - 12:45 PM</td>

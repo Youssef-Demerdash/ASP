@@ -62,23 +62,32 @@ INSERT INTO `admins` (`ID`, `FName`, `LName`, `Email`, `Password`, `Role`, `ROLE
 --
 
 CREATE TABLE `courses` (
-  `ID` int(11) NOT NULL,
-  `course code` varchar(150) NOT NULL,
-  `course name` text NOT NULL,
-  `pre-requisite` varchar(150) NOT NULL,
-  `credit hrs` int(11) NOT NULL,
-  `dr_id` int(11) NOT NULL,
-  `ta_id` int(11) NOT NULL,
-  `rt_id` int(11) NOT NULL
+  `ID` int(11) NOT NULL AUTO_INCREMENT,  -- Set as AUTO_INCREMENT
+  `course_code` varchar(150) NOT NULL,   -- Renamed for consistency
+  `course_name` text NOT NULL,            -- Renamed for consistency
+  `pre_requisite` varchar(150) NOT NULL,  -- Renamed to remove hyphen
+  `credit_hrs` int(11) NOT NULL,          -- Renamed to remove space
+  `faculty_id` int(11) NOT NULL,          -- Faculty member ID
+  `rt_id` int(11) NOT NULL,               -- Course-related teaching role ID (if applicable)
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`faculty_id`) REFERENCES `faculty`(`ID`),  -- Link to the `faculty` table
+  FOREIGN KEY (`rt_id`) REFERENCES `roles`(`ID`)          -- Assuming `roles` table exists for teaching roles
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
 
+-- --------------------------------------------------------
+INSERT INTO `courses` (`course_code`, `course_name`, `pre_requisite`, `credit_hrs`, `faculty_id`, `rt_id`) 
+VALUES
+('CS101', 'Data Structures', 'None', 3, 1, 1),  -- Faculty ID 1 (Doctor)
+('CS102', 'Introduction to Programming', 'None', 3, 1, 1),  -- Faculty ID 1 (Doctor)
+('CS103', 'Operating Systems', 'CS101', 4, 1, 2),  -- Faculty ID 2 (TA or different role)
+('CS104', 'Software Engineering', 'CS102', 3, 3, 1),  -- Faculty ID 3 (Doctor)
+('CS105', 'Machine Learning', 'CS101', 3, 3, 2);  -- Faculty ID 2 (TA or different role)
 --
 -- Table structure for table `doctors`
 --
 
-CREATE TABLE `doctors` (
+CREATE TABLE `faculty` (
   `ID` int(11) NOT NULL,
   `FName` text NOT NULL,
   `LName` text NOT NULL,
@@ -149,17 +158,7 @@ INSERT INTO `students` (`ID`, `FName`, `LName`, `Email`, `Password`, `Role`, `RO
 -- Table structure for table `ta`
 --
 
-CREATE TABLE `ta` (
-  `ID` int(11) NOT NULL,
-  `FName` text NOT NULL,
-  `LName` text NOT NULL,
-  `Email` varchar(150) NOT NULL,
-  `Password` varchar(150) NOT NULL,
-  `Role` text NOT NULL,
-  `ROLEID` int(11) NOT NULL,
-  `faculty` text NOT NULL,
-  `course code` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Indexes for dumped tables
@@ -176,11 +175,24 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`ID`);
+  -- Add a new column `faculty_id` to reference the faculty table
+ALTER TABLE `courses`
+ADD COLUMN `faculty_id` int(11) NOT NULL AFTER `credit_hrs`;  -- Placed after `credit_hrs` for example
+
+-- Remove the `dr_id` and `ta_id` columns, as they are no longer needed
+ALTER TABLE `courses`
+DROP COLUMN `dr_id`, 
+DROP COLUMN `ta_id`;
+
+-- Create a foreign key constraint on `faculty_id` referencing `faculty` table
+ALTER TABLE `courses`
+ADD CONSTRAINT `fk_faculty_id`
+FOREIGN KEY (`faculty_id`) REFERENCES `faculty`(`ID`);
 
 --
 -- Indexes for table `doctors`
 --
-ALTER TABLE `doctors`
+ALTER TABLE `faculty`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -192,8 +204,7 @@ ALTER TABLE `students`
 --
 -- Indexes for table `ta`
 --
-ALTER TABLE `ta`
-  ADD PRIMARY KEY (`ID`);
+
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -214,7 +225,7 @@ ALTER TABLE `courses`
 --
 -- AUTO_INCREMENT for table `doctors`
 --
-ALTER TABLE `doctors`
+ALTER TABLE `faculty`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -226,8 +237,7 @@ ALTER TABLE `students`
 --
 -- AUTO_INCREMENT for table `ta`
 --
-ALTER TABLE `ta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
