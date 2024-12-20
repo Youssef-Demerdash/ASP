@@ -10,101 +10,80 @@ include_once "includes/DB.inc.php";
     <title>My Profile</title>
     <link rel="stylesheet" href="css/dashboard_student.css">
     <link rel="stylesheet" href="css/myProfile_student.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <?php include 'sidebar_student.php'; ?>
 
-<body>
-
-
-<!-- Toggle Button -->
-<input class="label-check" id="label-check" type="checkbox">
-<label for="label-check" class="hamburger-label" id="toggleButton">
-    <div class="line1"></div>
-    <div class="line2"></div>
-    <div class="line3"></div>
-</label>
+<body class="gradient-clipped-background">
 
 <div class="container">
     <section class="profile-section">
         <h1>My Profile</h1>
-        <form action="updateProfile.php" method="POST" class="profile-form">
+        <form method="POST" class="profile-form">
             <div class="form-group">
                 <label for="student_id">Student ID:</label>
-                <input type="text" id="student_id" name="student_id" value="<?php echo $_SESSION['ID']; ?>">
+                <input type="text" id="student_id" name="student_id" value="<?php echo $_SESSION['ID']; ?>" readonly>
             </div>
 
             <div class="form-group">
                 <label for="fname">First Name:</label>
-                <input type="text" id="fname" name="fname" value="<?php echo $_SESSION['FName']; ?>">
+                <input type="text" id="fname" name="fname" value="<?php echo $_SESSION['FName']; ?>" readonly>
             </div>
 
             <div class="form-group">
                 <label for="lname">Last Name:</label>
-                <input type="text" id="lname" name="lname" value="<?php echo $_SESSION['LName']; ?>">
+                <input type="text" id="lname" name="lname" value="<?php echo $_SESSION['LName']; ?>" readonly>
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?php echo $_SESSION['Email']; ?>">
+                <input type="email" id="email" name="email" value="<?php echo $_SESSION['Email']; ?>" readonly>
             </div>
 
-            <div class="form-group">
-                <label for="pass">Password:</label>
-                <input type="password" id="pass" name="pass" value="<?php echo $_SESSION['Status']; ?>">
+                            <div class="form-group">
+                    <label for="pass">Password:</label>
+                    <input type="password" id="pass" name="pass" value="<?php echo $_SESSION['Password']; ?>">
+                    <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()"></i>
             </div>
+
 
             <div class="form-group">
                 <label for="status">Status:</label>
-                <input type="text" id="status" name="status" value="<?php echo $_SESSION['Status']; ?>" >
+                <input type="text" id="status" name="status" value="<?php echo $_SESSION['Status']; ?>" readonly>
             </div>
 
             <div class="form-group">
                 <label for="major">Major:</label>
-                <input type="text" id="major" name="major" value="<?php echo $_SESSION['Major']; ?>" >
-            </div>
-
-            <div class="form-group">
-                <label for="minor">Minor:</label>
-                <input type="text" id="minor" name="minor" value="<?php echo $_SESSION['Minor']; ?>" >
-            </div>
-
-            <div class="form-group">
-                <label for="sem_gpa">Semester GPA:</label>
-                <input type="number" id="sem_gpa" name="sem_gpa" value="<?php echo $_SESSION['Sem GPA']; ?>" >
+                <input type="text" id="major" name="major" value="<?php echo $_SESSION['Major']; ?>" readonly>
             </div>
 
             <div class="form-group">
                 <label for="cum_gpa">Cumulative GPA:</label>
-                <input type="number" id="cum_gpa" name="cum_gpa" value="<?php echo $_SESSION['Cum GPA']; ?>" >
-            </div>
-
-            <div class="form-group">
-                <label for="sem_crdth">Semester Credits:</label>
-                <input type="number" id="sem_crdth" name="sem_crdth" value="<?php echo $_SESSION['Sem crdth']; ?>" >
+                <input type="number" id="cum_gpa" name="cum_gpa" value="<?php echo $_SESSION['Cum GPA']; ?>" readonly>
             </div>
 
             <div class="form-group">
                 <label for="total_crdth">Total Credits:</label>
-                <input type="number" id="total_crdth" name="total_crdth" value="<?php echo $_SESSION['Total crdth']; ?>" >
+                <input type="number" id="total_crdth" name="total_crdth" value="<?php echo $_SESSION['Total crdth']; ?>" readonly>
             </div>
-
-            <button type="submit">Save Changes</button>
         </form>
     </section>
 </div>
 
 <script>
-    // Sidebar toggle function
-    document.querySelector('.label-check').addEventListener('change', function() {
-        const sidebar = document.getElementById('sidebar');
-        const toggleButton = document.getElementById('toggleButton');
-        
-        sidebar.classList.toggle('sidebar-hidden');
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('pass'); // Corrected ID reference
+    const toggleIcon = document.getElementById('togglePassword');
 
-        // Move the toggle button when sidebar is hidden or shown
-        toggleButton.style.left = sidebar.classList.contains('sidebar-hidden') ? '20px' : '210px';
-    });
+    // Toggle the type attribute
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+
+    // Toggle the eye icon
+    toggleIcon.classList.toggle('bi-eye');
+    toggleIcon.classList.toggle('bi-eye-slash');
+}
 </script>
+
 </body>
 </html>

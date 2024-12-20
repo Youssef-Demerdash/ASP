@@ -72,12 +72,12 @@ header {
 
 /* Welcome and AI Companion Box Styling */
 .welcome-box, .ai-companion-box {
-  background-color: #116993 !important; /* Use the specified color */
+  background-color: #9bacb45e !important; /* Use the specified color */
   padding: 20px;
   border-radius: 8px;
-  margin-bottom: 30px;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 /* Adjusted content inside the AI Companion Box */
@@ -119,6 +119,10 @@ header {
   align-self: flex-start;
 }
 
+.ai-companion-box {
+  margin-bottom: 10px; /* Reduce the space between the AI box and categories */
+}
+
 .ai-companion-box .future-button:hover {
   background-color: #45a049;
 }
@@ -133,7 +137,7 @@ header {
 
 .welcome-box h1 {
   font-size: 32px;
-  color: #116993;
+  color: #ffffff;
 }
 
 .welcome-box p {
@@ -145,8 +149,10 @@ header {
 .main-categories {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 15px;
   flex-wrap: wrap;
+  margin-top: -10px; /* Decrease the value further to reduce the gap */
+
 }
 
 .category-box {
@@ -216,4 +222,10 @@ header {
 
 .future-button:hover {
   background-color: #45a049; /* Darker green on hover */
+}
+
+.main-categories {
+  margin-top: -20px; /* Adjust this value as needed to raise the categories */
+  margin-top: -10px; /* Decrease the value further to reduce the gap */
+
 }
