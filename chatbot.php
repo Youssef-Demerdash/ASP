@@ -57,6 +57,8 @@
         }
     </style>
 </head>
+<?php include 'sidebar_student.php'; ?>
+
 <body>
     <div class="container">
         <h1>ChatGPT Assistant</h1>

@@ -15,7 +15,7 @@
         <a class="nav-link" href="myProfile_student.php">
             <i class="fas fa-user-circle"></i> My Profile
         </a>
-        <a class="nav-link" href="attendance.php">
+        <a class="nav-link" href="attendance_student.php">
             <i class="fas fa-check-circle"></i> Attendance
         </a>
         <a class="nav-link" href="SignOut.php">

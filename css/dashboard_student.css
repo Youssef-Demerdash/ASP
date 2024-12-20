@@ -1,6 +1,6 @@
 /* Gradient background with clip-path */
 .gradient-clipped-background {
-  background: linear-gradient(to top, #005f73, #00c9f2); /* Gradient from dark to light */
+  background: linear-gradient(to top, #005f73, #ffffff); /* Gradient from dark to light */
   -webkit-clip-path: ellipse(80% 70% at 50% 50%);
   clip-path: ellipse(80% 70% at 50% 50%);
   width: 100%;
