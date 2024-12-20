@@ -30,21 +30,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssssssssiiii", $Fname, $Lname, $Email, $Password, $role, $ROLEID, $Major, $Minor, $Status, $sem_gpa, $cum_gpa, $sem_crdth, $total_crdth);
-    }else if ($ROLE === "Faculty Member") {
+    } else if ($ROLE === "Faculty Member") {
+        // $FROLE = htmlspecialchars($_POST['FRole']);
         $faculty = htmlspecialchars($_POST['faculty']);
         $course_code = "";
-        $role = "Faculty Member";
-        $ROLEID = 2;
-    
-        $sql = "INSERT INTO faculty (FName, LName, Email, Password, Role, RoleID, faculty, `course code`) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    
-        $stmt = $conn->prepare($sql);
-        if ($stmt) {
-            $stmt->bind_param("ssssssss", $Fname, $Lname, $Email, $Password, $role, $ROLEID, $faculty, $course_code);
-        } else {
-            echo "Error: Failed to prepare statement.";
+
+        if ($FROLE === "Doctor") {
+            $role="Doctor";
+            $ROLEID=2;
+            $sql = "INSERT INTO doctors(FName, LName, Email, Password, Role, RoleID, faculty, `course code`) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        } else if ($FROLE === "TA") {
+            $role="TA";
+            $ROLEID=3;
+            $sql = "INSERT INTO ta(FName, LName, Email, Password, Role, RoleID, faculty, `course code`) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         }
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssssss", $Fname, $Lname, $Email, $Password, $role, $ROLEID, $faculty, $course_code);
     }
     if ($stmt->execute()) {
         header("Location:Login.php");
@@ -74,13 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <link rel="stylesheet" href="css/Signup.css"> <!-- Sidebar CSS -->
-    <style>
-    input::placeholder, select::placeholder {
-        color: black;
-        opacity: 1;
-    }
-</style>
-
+    
 </head>
 <body class="min-h-screen bg-gray-100 flex items-center justify-center">
 

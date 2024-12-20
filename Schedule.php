@@ -11,11 +11,141 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/schedule.css"> <!-- New Schedule CSS -->
     <link rel="stylesheet" href="css/dashboard_student.css"> <!-- Student Dashboard CSS -->
-   
-</head>
-<body class="gradient-clipped-background">
-<?php include 'sidebar_student.php'; ?> 
+    <style>
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #f5f7f9;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+            padding-top: 50px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
 
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+
+        /* Sidebar content styling */
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar-header {
+            padding: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        /* Toggle button styling */
+        .label-check {
+            display: none;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        .navbar-nav li a {
+            display: block;
+            color: #5f5f5f;
+            padding: 15px 25px;
+            font-size: 15px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-nav li a:hover,
+        .navbar-nav li.active a {
+            background-color: #e0e0e0;
+            color: #007bff;
+        }
+
+        .hamburger-label {
+            width: 70px;
+            height: 58px;
+            position: absolute;
+            top: 20px;
+            left: 210px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: left 0.3s ease; /* Smooth transition for the button position */
+        }
+
+
+        .navbar-brand {
+            color: #39464e;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Move the button to the left when sidebar is hidden */
+        .sidebar-hidden + .hamburger-label {
+            left: 20px;
+        }
+
+        .hamburger-label div {
+            width: 70px;
+            height: 6px;
+            background-color: #39464e;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        .line1 { top: 10px; }
+        .line2 { top: 24px; }
+        .line3 { top: 38px; }
+
+        /* Rotate lines on sidebar toggle */
+        #label-check:checked + .hamburger-label .line1 {
+            transform: rotate(28deg) scaleX(0.55) translate(39px, -4.5px);
+            border-radius: 50px 50px 50px 0;
+        }
+        #label-check:checked + .hamburger-label .line3 {
+            transform: rotate(-28deg) scaleX(0.55) translate(39px, 4.5px);
+            border-radius: 0 50px 50px 50px;
+        }
+        #label-check:checked + .hamburger-label .line2 {
+            width: 45px;
+            border-radius: 25px;
+        }
+
+        /* Dashboard styling */
+        .dashboard {
+            flex: 1;
+            margin-left: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="sidebar" id="sidebar">
+        <nav class="navbar" role="navigation">
+            <div class="navbar-header">
+                <h1>On Campus</h1>
+            </div>
+            <ul class="navbar-nav">
+                <li class="active"><a href="Schedule.php"><i class="fa fa-dashboard"></i> Schedule</a></li>
+                <li><a href="myProfile_student.php"><i class="fa fa-puzzle-piece"></i> My Profile</a></li>
+                <li><a href="SignOut.php"><i class="fa fa-heart"></i> Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <!-- Toggle Button -->
     <input class="label-check" id="label-check" type="checkbox">
@@ -48,7 +178,7 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
                 </thead>
                 <tbody>
                     <tr>
-                        <td>9:15 AM - 10:15 AM</td>
+                        <td>8:00 AM - 9:00 AM</td>
                         <td>Data Structures</td>
                         <td>Introduction to Programming</td>
                         <td>Data Structures</td>
@@ -56,12 +186,20 @@ $currentPage = 'schedule'; // Add a variable to identify the active page
                         <td>Software Engineering</td>
                     </tr>
                     <tr>
-                        <td>10:30 AM - 11:30 AM</td>
+                        <td>9:15 AM - 10:15 AM</td>
                         <td>Machine Learning</td>
                         <td>Web Development</td>
                         <td>Machine Learning</td>
                         <td>Database Systems</td>
                         <td>Artificial Intelligence</td>
+                    </tr>
+                    <tr>
+                        <td>10:30 AM - 11:30 AM</td>
+                        <td>Computer Networks</td>
+                        <td>Cybersecurity</td>
+                        <td>Computer Networks</td>
+                        <td>Human-Computer Interaction</td>
+                        <td>Mobile App Development</td>
                     </tr>
                     <tr>
                         <td>11:45 AM - 12:45 PM</td>

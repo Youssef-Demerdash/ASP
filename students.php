@@ -204,10 +204,10 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['ID'])) {
       })
       .catch(error => console.error('Error:', error));
 
-        // document.getElementById('studentid').innerText = `ID: ${id}`;
-        // document.getElementById('studentFullName').innerText = `Name: ${firstName} ${lastName}`;
-        // document.getElementById('studentEmail').innerText = `Email: ${email}`;
-        // document.getElementById('studentStatus').innerText = `Status: ${status}`;
+        // document.getElementById('studentid').innerText = ID: ${id};
+        // document.getElementById('studentFullName').innerText = Name: ${firstName} ${lastName};
+        // document.getElementById('studentEmail').innerText = Email: ${email};
+        // document.getElementById('studentStatus').innerText = Status: ${status};
 
         // const modal = new bootstrap.Modal(document.getElementById('studentInfoModal'));
         // modal.show();
