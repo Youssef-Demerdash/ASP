@@ -45,24 +45,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Check for doctor
-        if ($stmt = $conn->prepare("SELECT * FROM doctors WHERE Email = ?")) {
+        if ($stmt = $conn->prepare("SELECT * FROM faculty WHERE Email = ?")) {
             $stmt->bind_param("s", $Email);
             $stmt->execute();
             $result = $stmt->get_result();
 
             if ($row = $result->fetch_assoc()) {
-                // Verify the password
-                if ($Password === $row['Password']) {
-                    $_SESSION["ID"]=$row["ID"];
-                    $_SESSION["FName"]=$row["FName"];
-                    $_SESSION["LName"]=$row["LName"];
-                    $_SESSION["Email"]=$row["Email"];
+                echo "<pre>";
+                print_r($row); // Debugging: Print the retrieved row
+                echo "</pre>";
+                if ($Password === $row['Password']) { // Assuming plain-text comparison (use hashing in production)
+                    $_SESSION["ID"] = $row["ID"]; // Ensure case matches database
+                    $_SESSION["FName"] = $row["FName"];
+                    $_SESSION["LName"] = $row["LName"];
+                    $_SESSION["Email"] = $row["Email"];
                     $_SESSION["Password"]=$row["Password"];
-                    $_SESSION["Role"]=$row["Role"];
+                    $_SESSION["Role"] = $row["Role"]; 
                     $_SESSION["ROLEID"] = $row["ROLEID"];
                     $_SESSION["faculty"]=$row["faculty"];
-                    $_SESSION["course code"]=$row["course code"];
-                    header("Location: dashboard_dr.php?login=success");
+                    header("Location: dashboard_student.php?login=success");
                     exit();
                 }
             }
@@ -92,30 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->close();
         }
 
-        // Check for TA
-        if ($stmt = $conn->prepare("SELECT * FROM ta WHERE Email = ?")) {
-            $stmt->bind_param("s", $Email);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            if ($row = $result->fetch_assoc()) {
-                // Verify the password
-                if ($Password === $row['Password']) {
-                    $_SESSION["ID"]=$row["ID"];
-                    $_SESSION["FName"]=$row["FName"];
-                    $_SESSION["LName"]=$row["LName"];
-                    $_SESSION["Email"]=$row["Email"];
-                    $_SESSION["Password"]=$row["Password"];
-                    $_SESSION["Role"]=$row["Role"];
-                    $_SESSION["ROLEID"] = $row["ROLEID"];
-                    $_SESSION["faculty"]=$row["faculty"];
-                    $_SESSION["course code"]=$row["course code"];
-                    header("Location: dashboard_ta.php?login=success");
-                    exit();
-                }
-            }
-            $stmt->close();
-        } else {
+         else {
             die("Failed to prepare statement.");
         }
     } else {

@@ -1,5 +1,13 @@
 <?php
 session_start();
+include_once "includes/DB.inc.php";
+
+// Ensure user is logged in
+if (!isset($_SESSION['ID'])) {
+    echo "You are not logged in. Redirecting to login page...";
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,90 +15,64 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/dashboard_dr.css"> <!-- Existing dashboard CSS -->
-    <link rel="stylesheet" href="css/sidebar.css"> <!-- Sidebar CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="css/dashboard_student.css">
+    <link rel="stylesheet" href="css/myProfile_student.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
-<body>
-<aside>
-        <img src="img/logo.png" alt="Logo"  width="90%">
-      <br>
+<?php include 'sidebar_student.php'; ?>
 
-            <!-- Main Content -->
-            <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
-                <header class="dashboard-header my-4">
-                    <h1>My Profile</h1>
-                    <p class="lead">View and manage your profile information.</p>
-                </header>
-                
-                <section class="profile-details bg-white p-4 rounded shadow-sm">
-                    <h2 class="h4 mb-4">Personal Information</h2>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <p><strong>Username:</strong> <?php echo $_SESSION['username']; ?></p>
-                            <p><strong>Email:</strong> <?php echo $_SESSION['email']; ?></p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Role:</strong> <?php echo $_SESSION['role']; ?></p>
-                            <p><strong>Last Login:</strong> <?php echo $_SESSION['last_login']; ?></p>
-                        </div>
-                    </div>
-                    
-                    <hr class="my-4">
-                    
-                    <h2 class="h4 mb-4">Additional Details</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Department:</strong> <?php echo $_SESSION['department']; ?></p>
-                            <p><strong>Employee ID:</strong> <?php echo $_SESSION['employee_id']; ?></p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Access Level:</strong> <?php echo $_SESSION['access_level']; ?></p>
-                            <p><strong>Join Date:</strong> <?php echo $_SESSION['join_date']; ?></p>
-                        </div>
-                    </div>
-                </section>
-                
-                <div class="text-right mt-4">
-                    <a href="edit_profile.php" class="btn btn-outline-primary"><i class="fas fa-edit"></i> Edit Profile</a>
-                </div>
-            </main>
-        </div>
-    </div>
+<body class="gradient-clipped-background">
 
-    <a href="dr_Schedule.php">
-    <img src="img/clock.png" alt="myschedule" class="myschedule">
+<div class="container">
+    <section class="profile-section">
+        <h1>My Profile</h1>
+        <form method="POST" class="profile-form">
+            <div class="form-group">
+                <label for="faculty_id">Faculty ID:</label>
+                <input type="text" id="faculty_id" name="faculty_id" value="<?php echo htmlspecialchars($_SESSION['ID']); ?>" readonly>
+            </div>
 
-            <i class="fa fa-laptop"></i> Schedule
-        </a>
-        <a href="myProfile.php">
-        <img src="img/myprofile.png" alt="myprofile" class="myprofile">
+            <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname" value="<?php echo htmlspecialchars($_SESSION['FName']); ?>" readonly>
+            </div>
 
-            <i class="fa fa-clone"></i> My Profile
-        </a>
-        <a href="SignOut.php">
-        <img src="img/logout.png" alt="logout" class="logout">
-            <i class="fa fa-trash-o"></i> Log Out
-        </a>
-    </aside>
-    <?php
-session_start();
-echo "<h1>Your Profile</h1>";
-echo "First Name: " .   $_SESSION["FName"]."<br>";
-echo "Last Name: "  .	$_SESSION["LName"]."<br>";
-echo "Email :"      .	$_SESSION["Email"]."<br>";
-echo "Faculty: "    .	$_SESSION["Major"]."<br>";
-echo "Minor: "      .   $_SESSION["Minor"]."<br>";
-echo "Status:"      .   $_SESSION["Status"]."<br>";
-echo "Semester GPA:".   $_SESSION["Sem gpa"]."<br>";
-echo "CUM GPA:"     .   $_SESSION["Cum gpa"]."<br>";
-echo "Semester CRDH:".   $_SESSION["Sem crdh"]."<br>";
-echo "Total CRDH:"   .   $_SESSION["Total crdh"]."<br>";
+            <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname" value="<?php echo htmlspecialchars($_SESSION['LName']); ?>" readonly>
+            </div>
 
-echo"<a href='Dashboard.php'>Back</a>";
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['Email']); ?>" readonly>
+            </div>
 
-?>
+            <div class="form-group">
+                <label for="pass">Password:</label>
+                <input type="password" id="pass" name="pass" value="<?php echo htmlspecialchars($_SESSION['Password']); ?>" readonly>
+                <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="faculty">Faculty</label>
+                <input type="text" id="faculty" name="faculty" value="<?php echo htmlspecialchars($_SESSION['faculty']); ?>" readonly>
+            </div>
+        </form>
+    </section>
+</div>
+
+<script>
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('pass');
+    const toggleIcon = document.getElementById('togglePassword');
+
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+
+    toggleIcon.classList.toggle('bi-eye');
+    toggleIcon.classList.toggle('bi-eye-slash');
+}
+</script>
 
 </body>
 </html>
