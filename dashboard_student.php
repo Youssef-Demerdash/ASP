@@ -83,31 +83,30 @@
             <!-- Welcome Box with Grey Background -->
             <div class="welcome-box">
                 <h1>Welcome</h1>
-                <p>Your personalized student dashboard</p>
             </div>
 
             <!-- AI Companion Box -->
             <div class="ai-companion-box">
                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                <div class="container-of-future-is-here flex items-left justify-space-between" onclick="toggleChatbot()">
                     <div class="image-container">
+
                         <img class="sera-icon" src="img/XSERA-ICON.png" alt="X.SERA" />
                     </div>
                     <div class="future-content flex flex-col">
-                        <h3>X.SERA</h3>
+                        <h2>X.SERA</h2>
                         <p>Your AI Companion is here now. Give it a try and enjoy the future of learning ✨✨</p>
                     </div>
                     <div class="future-arrow-btn flex items-center inline-flex">
-                        <button class="future-button">
-                            <i class="fas fa-comments"></i> Chat Now
-                        </button>
+                    <button class="future-button" onclick="toggleChatbot()">
+                        <i class="fas fa-comments"></i> Chat Now
+                    </button>
                     </div>
                 </div>
             </div>
         </header>
-
+<!--
         <div class="dashboard-content">
-            <!-- Main Categories Section -->
+            Main Categories Section 
             <div class="main-categories">
                 <div class="category-box">
                     <h3>Courses</h3>
@@ -122,7 +121,7 @@
                     <h3>Schedule</h3>
                 </div>
             </div>
-        </div>
+    -->
     </div>
 
     <!-- Chatbot Modal -->
